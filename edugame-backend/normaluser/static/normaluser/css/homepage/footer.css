@@ -1,0 +1,49 @@
+.footer {
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer > div {
+  /* border: 1px solid greenyellow; */
+  min-height: 22rem;
+  max-height: 30rem;
+  width: 40%;
+  margin: 4rem 0;
+}
+
+.footer > div:first-child {
+  border-right: 2px solid white;
+}
+
+.footer > div header {
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.footer > div small {
+  text-align: center;
+  display: block;
+  /* border: 1px solid blue; */
+  width: 60%;
+  margin: auto;
+}
+
+.headers {
+  /* border: 1px solid hotpink; */
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.headers h2 {
+  font-size: 1.3rem;
+  padding: 1rem;
+  cursor: pointer;
+}

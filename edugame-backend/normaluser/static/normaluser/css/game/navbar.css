@@ -1,0 +1,102 @@
+/* Navbar */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.7rem;
+  background-color: whitesmoke;
+  padding: 0.3rem 0;
+}
+
+.navbar > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  transform: translateX(-3rem);
+}
+
+.navbar span {
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+}
+
+.navbar > div figure {
+  display: flex;
+  height: 100%;
+  margin: 0 0.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.navbar figure:last-child {
+  margin-left: 6rem;
+}
+
+
+.profileImageNavbar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+
+@media (max-width: 650px) {
+  .navbar {
+    height: 4rem;
+    font-size: 16px;
+  }
+
+  .navbar .logo {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .navbar > div figure {
+    height: 2rem;
+    width: 2rem;
+    margin: 0 0.7rem;
+  }
+
+  .navbar figure:last-child {
+    margin-left: 0rem;
+  }
+
+  .navbar > div {
+    transform: translateX(-1rem);
+  }
+
+  .profileImageNavbar{
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Heading */
+.battle-header {
+  /* border: 1px solid black; */
+  margin-top: 5rem;
+}
+
+@media (max-width: 370px) {
+  html {
+    font-size: 15px;
+  }
+  .navbar > div figure {
+    height: 1.6rem;
+    width: 1.6rem;
+    margin: 0 0.3rem;
+  }
+
+  .navbar figure:last-child {
+    margin-left: 1rem;
+  }
+
+  .profileImageNavbar{
+    width: 30px;
+    height: 30px;
+  }
+}
+
+

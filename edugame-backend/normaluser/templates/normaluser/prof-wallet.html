@@ -1,0 +1,110 @@
+{% load static %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c06afd5824.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/profile/profile.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/css/profile/profile-wallet.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/css/profile/profile-responsive.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.css" %}" />
+    <title>Profile - Wallet</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="container">
+            <!-- Changes -->
+            <div id="overlay">
+                <div class="menu" >
+                    <div class="btns">
+                        <button> <a href="{% url "normalUserProfile" %}">Details</a> </button>
+        
+                    </div>
+                    <div class="btns active">
+                        <button style="background-color: white; color: #000;"> Wallet</button>
+                    </div>
+                    <div class="btns">
+                         <button> <a href="{% url "normalUserProfileStats" %}">Stats</a> </button>
+                    </div>
+                    <div class="btns">
+                        <button ><a href="{% url "normalUserProfileSettings" %}">Settings</a></button>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="menu" id="menuForDesktop">
+                <div class="btns">
+                        <button> <a href="{% url "normalUserProfile" %}">Details</a> </button>
+    
+                </div>
+                <div class="btns active">
+                    <button style="background-color: white; color: #000;"> Wallet</button>
+                    <div class="arrow-left">
+                        <img src="{% static "normaluser/img/triangle.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="btns">
+                    <button> <a href="{% url "normalUserProfileStats" %}">Stats</a> </button>
+                </div>
+                <div class="btns">
+                    <button ><a href="{% url "normalUserProfileSettings" %}">Settings</a></button>
+                </div>
+            </div>
+    
+    
+    <!-- Changes End -->
+    
+        <div class="content">
+            <div class="heading">
+                <h1>Wallet</h1>
+                <a id="menuIcon" onclick="showMenu()"><i class="fas fa-bars fa-2x"></i></a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="{% static "normaluser/img/wallet.png" %}" alt="">
+                </div>
+                <div class="box-data">
+                    <div class="coins">
+                        <p>Current no of Coins : {{ request.user.userextendedprofile.total_points }} &nbsp;<i class="fas fa-coins" style="color: rgb(211, 208, 9); font-size: 24px;"></i></p>
+                        <button type="button" onclick='window.location.href="{% url "normalUserRechargeWallet" %}"'>Get Coins</button>
+                    </div>
+{#                    <div class="coupon">#}
+{#                        <p>Coupons available : 1</p>#}
+{#                        <button type="submit">Use</button>#}
+{#                    </div>#}
+{#                    TODO Money add an popup in withdraw section after getting relateion between coins and INR #}
+                    <div class="money">
+                        <p>Money in account : Rs {{ request.user.userextendedprofile.total_points|div:2 }}</p>
+                        <button type="button" onclick="withdrawMoney()">Withdraw</button>
+                    </div>
+                    <div class="info">
+                        <p>
+                            <i class="fas fa-info-circle"></i> Money can be withdrawn only if the amount is greater than Rs. 50
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script  src="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.js" %}"></script>
+    <script>
+        function showMenu() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+        function withdrawMoney() {
+            Notiflix.Report.Failure('Not Avaialble','Sorry ! Withdraw facility is yet not available. <br><br>- Intellup','Dismiss');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head></head>
+<body>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    var options = {
+        "key": "{{ razorpay_key_id }}", // Enter the Key ID generated from the Dashboard
+        "amount": {{ transaction_log_record.price }}, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Intellup",
+        "description": "It's fun to learn",
+        "handler": function (response){
+            window.location.href = "/verfiypayment/?payment_id="+response.razorpay_payment_id+"&transaction_id="+"{{ transaction_log_record.id }}";
+        },
+        "prefill": {
+            "name": "{{ request.user.username }}",
+            "email": "{{ request.user.email }}",
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+
+    rzp1.open();
+    </script>
+</body>
+</html>

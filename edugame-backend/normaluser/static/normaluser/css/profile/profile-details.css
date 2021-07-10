@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+.box-data {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.user-dp {
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.user-dp img {
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+.user-dp button {
+    width: 140px;
+    height: 35px;
+    border: solid 3px #006096;
+    border-radius: 10px;
+    color: #006096;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.user-details {
+    height: 80%;
+    padding: 20px;
+    margin: 0 20px;
+}
+
+.user-details p:nth-child(1) {
+    font-size: 48px;
+    font-weight: bold;
+    color: #434343;
+}
+
+.user-details p:nth-child(2) {
+    font-size: 24px;
+    color: #6D6D6D;
+    font-weight: bold;
+}
+
+.user-details p:nth-child(3) {
+    font-size: 18px;
+    color: #6D6D6D;
+    font-weight: bold;
+}
+
+.edit-link {
+    width: 12vw;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: flex-end;
+    padding: 20px;
+    margin: 0 20px;
+}
+
+.edit-link a {
+    color: #047dc4;
+    text-decoration: underline;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.edit-link a:hover {
+    color: #032a41;
+}
+
+
+/* ----------------------RESPONSIVE -------------------------*/
+
+@media (max-width: 1200px) {
+    .user-dp {
+        margin: 0 16px;
+    }
+    .user-dp img {
+        height: 110px;
+        margin-bottom: 16px;
+    }
+    .user-dp button {
+        width: 110px;
+        height: 30px;
+        border-radius: 8px;
+        font-size: 12px;
+    }
+    .user-details {
+        padding: 16px;
+        margin: 0 16px;
+    }
+    .user-details p:nth-child(1) {
+        font-size: 40px;
+    }
+    .user-details p:nth-child(2) {
+        font-size: 18px;
+    }
+    .user-details p:nth-child(3) {
+        font-size: 14px;
+    }
+    .edit-link {
+        width: 150px;
+        padding: 14px;
+        margin: 0 14px;
+    }
+    .edit-link a {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .user-dp {
+        margin: 0 12px;
+    }
+    .user-dp img {
+        height: 100px;
+        margin-bottom: 12px;
+    }
+    .user-dp button {
+        width: 100px;
+        height: 25px;
+        border-radius: 6px;
+        font-size: 12px;
+    }
+    .user-details {
+        padding: 12px;
+        margin: 0 12px;
+    }
+    .user-details p:nth-child(1) {
+        font-size: 32px;
+    }
+    .user-details p:nth-child(2) {
+        font-size: 16px;
+    }
+    .user-details p:nth-child(3) {
+        font-size: 12px;
+    }
+    .edit-link {
+        padding: 2px;
+        margin: 0 2px;
+    }
+    .edit-link a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .user-dp {
+        margin: 0 8px;
+    }
+    .user-dp img {
+        height: 60px;
+        margin-bottom: 8px;
+    }
+    .user-dp button {
+        width: 65px;
+        height: 20px;
+        border-radius: 4px;
+        font-size: 8px;
+        border: solid 2px #006096;
+    }
+    .user-details {
+        padding: 8px;
+        margin: 0 8px;
+    }
+    .user-details p:nth-child(1) {
+        font-size: 18px;
+    }
+    .user-details p:nth-child(2) {
+        font-size: 9px;
+    }
+    .user-details p:nth-child(3) {
+        font-size: 7px;
+    }
+    .edit-link {
+        padding: 2px;
+        margin: 0 2px;
+    }
+    .edit-link a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .user-dp {
+        margin: 0 6px;
+    }
+    .user-dp img {
+        height: 60px;
+        margin-bottom: 6px;
+    }
+}
+
+@media (max-width: 320px) {
+    .user-dp {
+        margin: 0 4px;
+    }
+    .user-dp img {
+        height: 45px;
+        margin-bottom: 4px;
+    }
+    .user-dp button {
+        width: 45px;
+        height: 14px;
+        border-radius: 3px;
+        font-size: 5px;
+        font-weight: bold;
+        border: solid 2px #006096;
+    }
+    .user-details {
+        padding: 4px;
+        margin: 0 4px;
+    }
+    .user-details p:nth-child(1) {
+        font-size: 13px;
+    }
+    .user-details p:nth-child(2) {
+        font-size: 8px;
+    }
+    .user-details p:nth-child(3) {
+        font-size: 6px;
+    }
+    .edit-link {
+        padding: 2px;
+        margin: 0 2px;
+    }
+    .edit-link a {
+        font-size: 9px;
+    }
+}

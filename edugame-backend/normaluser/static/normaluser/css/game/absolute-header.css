@@ -1,0 +1,117 @@
+/* Top Battle Header */
+.absolute-header {
+  /* border: 1px solid black; */
+  display: flex;
+  width: 30rem;
+  justify-content: space-evenly;
+  z-index: 2;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 35%;
+  background-color: white;
+  border-radius: 0 0 2rem 3rem;
+  box-shadow: 2px 2px 15px gray;
+}
+
+.opponent {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-areas: "image name" "image question";
+  font-size: 1.3rem;
+}
+
+/* Initialiing grid area name */
+.image {
+  grid-area: image;
+  width: 4rem;
+  height: 4rem;
+  /* border: 1px solid blue; */
+}
+
+.image img {
+  width: 100%;
+}
+
+.name {
+  grid-area: name;
+}
+.question {
+  grid-area: question;
+}
+
+/* Media Query for adjusting the top header */
+
+@media (max-width: 1300px) {
+  .absolute-header {
+    left: 32%;
+  }
+}
+@media (max-width: 1200px) {
+  .absolute-header {
+    left: 30%;
+  }
+}
+@media (max-width: 1100px) {
+  .absolute-header {
+    left: 28%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .absolute-header {
+    transform: scale(0.8);
+    top: -0.7rem;
+    left: 26%;
+  }
+}
+@media (max-width: 900px) {
+  .absolute-header {
+    left: 22%;
+  }
+}
+
+@media (max-width: 850px) {
+  .absolute-header {
+    transform: scale(0.7);
+    top: -1rem;
+    left: 21%;
+  }
+}
+
+@media (max-width: 800px) {
+  .absolute-header {
+    transform: scale(0.7);
+    top: -1rem;
+    left: 18%;
+  }
+}
+@media (max-width: 775px) {
+  .absolute-header {
+    transform: scale(0.7);
+    top: -1rem;
+    left: 16%;
+  }
+}
+
+@media (max-width: 750px) {
+  .absolute-header {
+    transform: scale(0.9);
+    top: 6rem;
+    left: 0;
+    right: 0;
+    width: auto;
+    border-radius: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .absolute-header {
+    transform: scale(0.8);
+    top: 6rem;
+    left: -1rem;
+    right: -1rem;
+    width: auto;
+    border-radius: 1rem;
+  }
+}

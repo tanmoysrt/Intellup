@@ -1,0 +1,78 @@
+{% extends "customadmin/base.html" %}
+{% load static %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    {% if message %}
+        {% autoescape off %}
+            {{ message }}
+        {% endautoescape %}
+    {% endif %}
+
+
+
+        <div class="card card-info">
+            <div class="card-header">
+              <h3 class="card-title">List Of Contests</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Max Points For Winner</th>
+                    <th>Points to Deduct</th>
+                    <th>Difficulty</th>
+                    <th>Class</th>
+                    <th>Subject</th>
+                    <th>No Of Questions</th>
+                    <th>Created On</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for contest in contests %}
+                    <tr>
+                    <td><a href="{% url "adminContestConfigSeperate" contest.id %}" target="_blank">{{ contest.title }}</a></td>
+                    <td>{{ contest.max_point }}</td>
+                    <td>{{ contest.point_to_deduct }}</td>
+                    <td>{{ contest.get_difficulty_display }}</td>
+                    <td>{{ contest.school_class.title }}</td>
+                    <td>{{ contest.school_subject.title }}</td>
+                    <td>{{ contest.questionanswerforcontest_set.all | length }}</td>
+                    <td>{{ contest.created_on }}</td>
+                    </tr>
+                {% endfor %}
+                
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static "customadmin/plugins/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "customadmin/plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href.split('?')[0] );
+    }
+    </script>
+{% endblock %}

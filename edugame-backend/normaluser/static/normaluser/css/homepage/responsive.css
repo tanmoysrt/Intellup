@@ -1,0 +1,206 @@
+/* NavBar */
+@media (max-width: 800px) {
+   .Menu {
+    height: 23rem;
+    position: fixed;
+    margin: 0;
+    top: -100%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    padding: 1.3rem 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--secondary);
+    transition: all 0.8s ease-in-out;
+    display: flex;
+    opacity: 0;
+    border-radius: 0 0 200rem 200rem;
+  }
+   .Menu li {
+    margin: 25px;
+  }
+
+   .Menu li a {
+    padding: 8px 12px;
+    border-radius: 7px;
+    background-color: var(--primary-dark);
+    color: whitesmoke;
+  }
+  nav .Menu li a:hover {
+    box-shadow: 0 0 15px white, 0 0 20px white, 0 0 35px lightskyblue,
+      0 0 45px lightskyblue, 0 0 60px var(--primary-light);
+  }
+
+  /* Footer */
+  .footer {
+    flex-direction: column;
+  }
+  .footer > div {
+    width: 90%;
+    margin: 2rem;
+  }
+
+  .footer > div:first-child {
+    border: none;
+    border-bottom: 2px solid white;
+  }
+  .footer > div small {
+    width: 90%;
+  }
+
+  /* text over Image slider */
+  .logoname {
+    top: 8rem;
+  }
+  .logoname header {
+    font-size: 5rem;
+  }
+  .logoname p {
+    font-size: 1.5rem;
+  }
+}
+/* hide logoname  and Display hamburger*/
+@media (max-width: 600px) {
+  .logoname {
+    display: none;
+  }
+   .Menu {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+  .toggler {
+    display: inline-block;
+  }
+  .cointainer {
+    height: 25rem;
+  }
+
+  .slider figure {
+    background-color: none;
+  }
+  .slider figure img {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Reducing the font size */
+  html {
+    font-size: 14px;
+  }
+
+  /* hidding the caption of payment methods */
+  .rewards figure figcaption {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Reducing The size of game logo */
+  .logo {
+    width: 8rem;
+  }
+  .heading {
+    font-size: 2.5rem;
+    padding: 0.3rem;
+  }
+  /* Redducing hieght of slider */
+  .cointainer {
+    height: 22rem;
+  }
+  .slider figure {
+    height: 22rem;
+  }
+
+  /* Gradient box */
+  .matchChoice {
+    padding: 2rem 0.5rem;
+  }
+  /* reducing the payment icon size */
+  .rewards figure {
+    height: 9rem;
+    width: 9rem;
+  }
+
+  /* box size */
+  .testimonilas > div {
+    padding-top: 3rem;
+    height: 40rem;
+  }
+
+  .testimonilas .box {
+    /* width: 95%; */
+    min-width: 20rem;
+    margin: 3rem 1rem;
+    padding: 0;
+  }
+
+  .testimonilas .box p {
+    padding: 1rem;
+    line-height: 1.3rem;
+  }
+  /* Box-pic */
+  .dp {
+    width: 9rem;
+    height: 9rem;
+  }
+  .rewards {
+    padding: 0;
+    padding-top: 2rem;
+  }
+  .rewards figure {
+    height: 8rem;
+    width: 8rem;
+  }
+
+  /* Doubt section */
+  .qnaCointainer {
+    width: 95%;
+    margin: 1rem 0;
+  }
+
+  .wrap {
+    padding-bottom: 3rem;
+  }
+
+  /* Footer */
+
+  .headers {
+    height: 12.3rem;
+  }
+
+  .headers h2 {
+    padding: 0.7rem;
+  }
+
+  .footer > div {
+    margin: 0px;
+  }
+}
+
+@media (max-width: 290px) {
+  html {
+    font-size: 13px;
+  }
+  .match {
+    margin: 1rem 0.4rem;
+  }
+  .testimonilas .box {
+    width: 98%;
+    margin: 2rem 0;
+  }
+
+  .rewards figure {
+    height: 7rem;
+    width: 7rem;
+    margin: 0.6rem;
+  }
+   .hamburger > div {
+    height: 0.3071rem;
+  }
+}

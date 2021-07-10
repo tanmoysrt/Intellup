@@ -1,0 +1,304 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+      integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/style.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/hamburger.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/image-slider.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/events.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/testimonila.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/rewards.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/qna.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/footer.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/homepage/responsive.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/navbar.css" %}">
+    <title>Intellup</title>
+  </head>
+
+  <body>
+{#    <header class="nav">#}
+{#      <nav>#}
+{#        <div class="logo">#}
+{#          <img src="{% static "normaluser/img/logo.png" %}" alt="" />#}
+{#        </div>#}
+{##}
+{#        <input type="checkbox" class="toggler" />#}
+{#        <div class="hamburger"><div></div></div>#}
+{##}
+{#        <ul class="Menu">#}
+{#          <li><a href="{% url "normalUserLoginPage" %}">Login</a></li>#}
+{#          <li><a href="{% url "normalUserRegisterPage" %}">Sign Up</a></li>#}
+{#        </ul>#}
+{#      </nav>#}
+{#    </header>#}
+
+    <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+        {% if request.user.is_authenticated %}
+              <div>
+        <figure>
+          <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure>
+        <span id="points">{{ request.user.userextendedprofile.total_points }}</span>
+        <figure>
+          <a href="{% url "normalUserRechargeWallet" %}"><img src="{% static "normaluser/img/add.png" %}" alt="" /></a>
+        </figure>
+        <figure>
+          <a href="{% url "normalUserProfile" %}"><img class="profileImageNavbar" src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" /></a>
+        </figure>
+      </div>
+            {% else %}
+        <ul class="Menu">
+          <li><a href="{% url "normalUserLoginPage" %}">Login</a></li>
+          <li><a href="{% url "normalUserRegisterPage" %}">Sign Up</a></li>
+        </ul>
+        {% endif %}
+
+    </nav>
+
+        <input type="checkbox" class="toggler" />
+        <div class="hamburger"><div></div></div>
+{##}
+{#        <ul class="Menu">#}
+{#          <li><a href="{% url "normalUserLoginPage" %}">Login</a></li>#}
+{#          <li><a href="{% url "normalUserRegisterPage" %}">Sign Up</a></li>#}
+{#        </ul>#}
+
+    <!-- For image slider -->
+    <div class="cointainer">
+      <div class="slider">
+        <figure>
+          <img src="{% static "normaluser/img/carouselimg1.png" %}" alt="" />
+          <img src="{% static "normaluser/img/carouselimg2.png" %}" alt="" />
+          <img src="{% static "normaluser/img/carouselimg3.png" %}" alt="" />
+          <img src="{% static "normaluser/img/carouselimg1.png" %}" alt="" />
+        </figure>
+      </div>
+{#      <div class="logoname">#}
+{#        <header><strong>I</strong>ntellup</header>#}
+{#        <p>A new to make learning exciting.</p>#}
+{#          {% if request.user.is_authenticated  %}#}
+{#              {% else %}#}
+{#          <div class="slider-buttons">#}
+{#              <button class="login"><a href="{% url "normalUserLoginPage" %}">Login</a></button>#}
+{#              <button class="login"><a href="{% url "normalUserRegisterPage" %}">Sign Up</a></button>#}
+{#            </div>#}
+{#          {% endif %}#}
+{##}
+{#      </div>#}
+    </div>
+
+    <!-- Mathch types -->
+
+    <section class="matchChoice">
+      <div class="match">
+        <header class="bold">One on One</header>
+        <p>
+          Lots of Subjects to choose from and play in different modes USE
+          powerups to defeat the enemy and win <strong>CASH</strong> rewards
+        </p>
+        <button><a href="{% url "normalUserChooseSubjectForBattle" %}">Play Now</a></button>
+      </div>
+      <div class="match">
+        <header class="bold">Contests</header>
+        <p>
+          Particpate in timed events <br />
+          Top the Leaderboard <br />
+          <br />
+          Win Cash Rewards and gift hampers
+        </p>
+        <button><a href="{% url "normalUserContestsList" %}">Play Now</a></button>
+      </div>
+    </section>
+
+    <!-- Testimonilas -->
+    <section class="testimonilas">
+      <header class="heading">Testimonials</header>
+      <div>
+        <div class="box">
+          <figure class="dp">
+            <img src="https://www.shareicon.net/data/512x512/2016/07/26/802043_man_512x512.png" alt="" />
+          </figure>
+          <header class="bold">Selmon boii</header>
+          <small>Lorem ipsum dolor sit, amet .</small>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+            dignissimos corrupti, necessitatibus repudiandae, assumenda fugit
+            maxime quas minima tempora dolorum esse ipsa quia excepturi
+            molestias in vitae doloribus illo, pariatur veritatis sequi
+            reprehenderit! Possimus aliquam perferendis suscipit quo rem
+            explicabo quam, voluptas voluptatum dignissimos quae porro delectus
+            architecto laudantium.
+          </p>
+        </div>
+
+        <div class="box">
+          <figure class="dp">
+            <img src="https://www.shareicon.net/data/512x512/2016/07/26/802043_man_512x512.png" alt="" />
+          </figure>
+          <header class="bold">Selmon boii</header>
+          <small>Lorem ipsum dolor sit, amet .</small>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+            dignissimos corrupti, necessitatibus repudiandae, assumenda fugit
+            maxime quas minima tempora dolorum esse ipsa quia excepturi
+            molestias in vitae doloribus illo, pariatur veritatis sequi
+            reprehenderit! Possimus aliquam perferendis suscipit quo rem
+            explicabo quam, voluptas voluptatum dignissimos quae porro delectus
+            architecto laudantium.
+          </p>
+        </div>
+
+        <div class="box">
+          <figure class="dp">
+            <img src="https://www.shareicon.net/data/512x512/2016/07/26/802043_man_512x512.png" alt="" />
+          </figure>
+          <header class="bold">Selmon boii</header>
+          <small>Lorem ipsum dolor sit, amet .</small>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+            dignissimos corrupti, necessitatibus repudiandae, assumenda fugit
+            maxime quas minima tempora dolorum esse ipsa quia excepturi
+            molestias in vitae doloribus illo, pariatur veritatis sequi
+            reprehenderit! Possimus aliquam perferendis suscipit quo rem
+            explicabo quam, voluptas voluptatum dignissimos quae porro delectus
+            architecto laudantium.
+          </p>
+        </div>
+
+        <div class="box">
+          <figure class="dp">
+            <img src="https://www.shareicon.net/data/512x512/2016/07/26/802043_man_512x512.png" alt="" />
+          </figure>
+          <header class="bold">Selmon boii</header>
+          <small>Lorem ipsum dolor sit,</small>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+            dignissimos corrupti, necessitatibus repudiandae, assumenda fugit
+            maxime quas minima tempora dolorum esse ipsa quia excepturi
+            molestias in vitae doloribus illo, pariatur veritatis sequi
+            reprehenderit! Possimus aliquam perferendis suscipit quo rem
+            explicabo quam, aliquid voluptas voluptatum dignissimos quae porro
+            delectus architecto laudantium.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rewards -->
+    <section class="reward-section">
+      <header class="heading">Withraw Winning With</header>
+      <div class="rewards">
+        <figure>
+          <img src="{% static "normaluser/img/upi.jpg" %}" alt="" />
+          <figcaption class="bold">UPI</figcaption>
+        </figure>
+        <figure>
+          <img src="{% static "normaluser/img/amazon.png" %}" alt="" />
+          <figcaption class="bold">Amazon Pay</figcaption>
+        </figure>
+        <figure>
+          <img src="{% static "normaluser/img/paytm.png" %}" alt="" />
+          <figcaption class="bold">Paytm Wallet</figcaption>
+        </figure>
+        <figure>
+          <img src="{% static "normaluser/img/bank.jpg" %}" alt="" />
+          <figcaption class="bold">Bank Transfers</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="qna">
+      <header class="heading">Frequently Asked Question</header>
+      <div class="wrap">
+        <div class="qnaCointainer">
+          <div class="qnaHeading">
+              How to play this game ?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="qnaContent">
+            <p>Participate in the battles and events, answer the questions appearing on the screen following the rules in the respective.
+            </p>
+          </div>
+        </div>
+        <div class="qnaCointainer">
+          <div class="qnaHeading">
+            What if I run out of coins ?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="qnaContent">
+            <p>
+              Don’t worry we have a store that has coins at a very low cost.
+            </p>
+          </div>
+        </div>
+        <div class="qnaCointainer">
+          <div class="qnaHeading">
+            Can I really win real cash in Intellup ?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="qnaContent">
+            <p>
+              Absolutely! A lot of players have won a lot amount of money. We have a lot of different kinds of battles and events. Choose any battle defeat opponents and win real cash
+            </p>
+          </div>
+        </div>
+        <div class="qnaCointainer">
+          <div class="qnaHeading">
+            Can I withdraw the cash that I have won?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="qnaContent">
+            <p>
+              Yes you can withdraw the cash via Paytm, UPI, etc. once you have reached the minimum withdraw limit.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="footer">
+      <div>
+        <header>Disclaimer</header>
+        <small>
+          We are not associated nor affiliated by the boards and we do not own
+          any questions here
+        </small>
+        <div class="headers">
+          <h2>About Us</h2>
+          <h2>Privacy Policy</h2>
+          <h2>Terms and Conditions</h2>
+        </div>
+      </div>
+      <!-- <hr /> -->
+      <div>
+        <header>Contact Us</header>
+      </div>
+    </section>
+
+    <script src="{% static "normaluser/js/dropDownHome.js" %}"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+{% extends "customadmin/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'customadmin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'customadmin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+{% endblock head %}
+
+
+{% block content %}
+<div class="container-fluid">
+    {% if message %}
+        {% autoescape off %}
+            {{ message }}
+        {% endautoescape %}
+    {% endif %}
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Old Contest Leaderboard</h3>
+        </div>
+        <div class="card-body">
+          <table id="tb" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Class</th>
+                  <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for history in histories %}
+                <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ history.user.user_base_profile.username }}</td>
+                <td>{{ history.user.user_base_profile.email }}</td>
+                <td>{{ history.user.present_class }}</td>
+                <td>{{ history.points }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+            <tfoot>
+              <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Class</th>
+                  <th>Points</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'customadmin/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'customadmin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'customadmin/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'customadmin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+
+    <script>
+      $(function () {
+
+        $('#tb').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": false,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
+{% endblock js %}

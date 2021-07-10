@@ -1,0 +1,117 @@
+{% extends "customadmin/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "customadmin/plugins/summernote/summernote-bs4.min.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+        {% if message %}
+          {% autoescape off %}
+            {{ message }}
+          {% endautoescape %}
+        {% endif %}
+        <div class="row">
+          <!-- left column -->
+          <div class="col-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Create New Contest</h3>
+              </div>
+              <!-- /.card-header -->
+
+              <!-- form start -->
+                <form method="post">
+              {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                        <label>Enter Contest Name</label>
+                        <input type="text" class="form-control" placeholder="Enter contest name" name='title' required>
+                      </div>
+                    <div class="form-group">
+                        <label>Select Contest Difficulty</label>
+                        <select class="form-control" name="difficulty" required>
+                          {% for level in levels %}
+                                    <option value="{{ level.0 }}">{{ level.1 }}</option>
+                                {% endfor %}
+                        </select>
+                      </div>
+                    <div class="form-group">
+                        <label>Select Contest Subject</label>
+                        <select class="form-control" name="subject" required>
+                        {% for subject in subjects %}
+                                    <option value="{{ subject.id }}">{{ subject.title }}</option>
+                            {% endfor %}</select>
+                      </div>
+                  <div class="form-group">
+                        <label>Select Contest Class</label>
+                        <select class="form-control" name="class" required>
+                          {% for class in classes %}
+                                    <option value="{{ class.id }}">{{ class.title }}</option>
+                                {% endfor %}
+                        </select>
+                      </div>
+
+                    <div class="form-group">
+                        <label>Enter Contest Valid till</label>
+                        <input type="datetime-local" class="form-control" placeholder="Enter Contest Valid Till" name='validity' required>
+                      </div>
+                    <div class="form-group">
+                        <label>Enter Contest Starting from</label>
+                        <input type="datetime-local" class="form-control" placeholder="Enter Contest name" name='starting_from' required>
+                      </div>
+                    <div class="form-group">
+                        <label>Enter Contest Points for Winner</label>
+                        <input type="number" class="form-control" placeholder="Enter Contest Points for Winner" name='points' required>
+                      </div>
+
+                    <div class="form-group">
+                        <label>Enter Contest Points for Playing [to be dedcuted]</label>
+                        <input type="number" class="form-control" placeholder="Enter Contest Points for plating" name='points_to_deduct' required>
+                      </div>
+                    </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="reset" style="float: left;" class="btn btn-secondary">Reset</button>
+                    <button type="submit" style="float: right;" class="btn btn-primary">Create Contest</button>
+                </div>
+              </form>
+
+            <!-- /.card -->
+
+            <!-- general form elements -->
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--/.col (right) -->
+        </div>
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+<!-- Summernote -->
+    <script src="{% static "customadmin/plugins/summernote/summernote-bs4.min.js" %}"></script>
+    <script>
+
+      $(function () {
+        // Summernote
+        $('#summernote').summernote();
+        $('#summernoteOption1').summernote();
+        $('#summernoteOption2').summernote();
+        $('#summernoteOption3').summernote();
+        $('#summernoteOption4').summernote();
+      });
+    </script>
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
+{% endblock %}

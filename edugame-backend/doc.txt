@@ -1,0 +1,21 @@
+Note that
+1. First migrate apps then the default one
+
+--------------------------------------
+::  Superuser test account  ::
+
+Email address: admin@test.com
+First name: Admin
+Last name: Admin
+Username: admin
+Password: 123456
+
+-----------------------------------------
+Routes :
+
+/login/ : Normal user login
+/register/ : Normal user register
+/resetpass/ : An api endpooint to request reset link
+/resetlink/<uuid:id>/ : Endpoint to verify reset link and change password
+
+-----------------------------------------

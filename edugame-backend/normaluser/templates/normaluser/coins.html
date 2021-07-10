@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/92b21ed5b0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/coinpage/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/coinpage/coins.css" %}" />
+    <title>Coins</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <div>
+        <figure>
+          <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure>
+        <span id="points">{{ request.user.userextendedprofile.total_points }}</span>
+        <figure>
+          <a href="{% url "normalUserRechargeWallet" %}"><img src="{% static "normaluser/img/add.png" %}" alt="" /></a>
+
+        </figure>
+        <figure>
+          <a href="{% url "normalUserProfile" %}"><img class="profileImageNavbar" src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" /></a>
+        </figure>
+      </div>
+    </nav>
+
+    <header class="heading">Coin Shop</header>
+    <div class="cointainer">
+        {% for coinPackage in coinPackages %}
+        <div class="box">
+            <figure>
+                {% if coinPackage.coins > 2000 %}
+                    <img src="{% static "normaluser/img/LargePack.png" %}" alt="" />
+                {% else %}
+                  <img src="{% static "normaluser/img/smallPack.png" %}" alt="" />
+                {% endif %}
+            </figure>
+            <div> <strong>Coins :</strong> {{ coinPackage.coins }} </div>
+            <div> <strong>Cost :</strong> &#8377 {{ coinPackage.price }} </div>
+            <button> <a href="{% url "normalUserCoinPaymentPage" %}?coinPackId={{ coinPackage.id }}" class="bold">Buy</a> </button>
+        </div>
+        {% endfor %}
+
+    </div>
+
+  </body>
+</html>

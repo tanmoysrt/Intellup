@@ -1,0 +1,80 @@
+@media (max-width: 900px) {
+    .left {
+        height: 300px;
+    }
+    .left img {
+        height: 300px;
+    }
+    .right {
+        height: 300px;
+    }
+    .right h1:first-child {
+        font-size: 48px;
+    }
+    .right h1:nth-child(2) {
+        font-size: 36px;
+    }
+    .btn button {
+        width: 240px;
+        height: 55px;
+        font-size: 35px;
+        border-radius: 12px;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .left {
+        height: 250px;
+    }
+    .left img {
+        height: 250px;
+    }
+    .right {
+        height: 250px;
+    }
+    .right h1:first-child {
+        font-size: 36px;
+    }
+    .right h1:nth-child(2) {
+        font-size: 24px;
+    }
+    .btn button {
+        width: 160px;
+        height: 43px;
+        font-size: 28px;
+        border-radius: 8px;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    .left {
+        height: 250px;
+        margin: 100px 0 20px 0;
+        padding-left: 50px;
+    }
+    .left img {
+        height: 250px;
+    }
+    .right {
+        height: 250px;
+    }
+    .right h1:first-child {
+        font-size: 36px;
+    }
+    .right h1:nth-child(2) {
+        font-size: 24px;
+    }
+    .btn button {
+        width: 180px;
+        height: 43px;
+        font-size: 28px;
+        border-radius: 8px;
+        margin-top: 25px;
+    }
+}

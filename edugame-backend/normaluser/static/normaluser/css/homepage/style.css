@@ -1,0 +1,59 @@
+/* Navbar */
+/*.nav {*/
+/*  background-color: whitesmoke;*/
+/*  !* border-color: whitesmoke; *!*/
+/*  position: relative;*/
+/*  overflow-x: hidden;*/
+/*  overflow-y: visible;*/
+/*}*/
+/*nav {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  width: 100vw;*/
+/*  height: 5rem;*/
+/*  max-width: 2000px;*/
+/*  margin: auto;*/
+/*  color: white;*/
+/*}*/
+
+/* Stling list items */
+ .Menu {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+  /*display: none;*/
+}
+ .Menu li {
+  margin: 0 20px;
+}
+ .Menu li a {
+  display: block;
+  padding: 8px 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  border: 2px solid var(--primary-dark);
+  font-size: 20px;
+  border-radius: 7px;
+}
+ .Menu li a:hover {
+  background: var(--primary-dark);
+  color: whitesmoke;
+  box-shadow: 0 0 15px lightskyblue, 0 0 22px var(--primary-light);
+  transition: 0.5s;
+}
+
+/* open close Buttons */
+ .openMenu {
+  font-size: 2rem;
+  margin-right: 18px;
+  display: none;
+  cursor: pointer;
+}
+ .Menu .closeMenu {
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+}

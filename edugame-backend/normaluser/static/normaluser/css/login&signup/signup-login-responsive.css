@@ -1,0 +1,81 @@
+/*--------------------------- LOGIN SIGNUP PAGE--------------------------------------- */
+
+@media (max-width: 600px) {
+  .bg-login {
+    justify-content: center;
+  }
+  .content {
+    width: 70%;
+    margin: auto;
+    border-radius: 10px;
+  }
+  .content .door {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .door img {
+    width: 90%;
+  }
+  .text-field input {
+    width: 250px;
+    height: 33px;
+    padding: 8px;
+  }
+  .pass {
+    width: 250px;
+    font-size: 8px;
+  }
+  .btn {
+    width: 250px;
+    height: 33px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .bg-login {
+    justify-content: center;
+  }
+  .content {
+    /* height: 80%; */
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+  }
+  .content .door {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+  }
+  .door img {
+    width: 90%;
+  }
+  .content form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+    margin: 20px 0;
+  }
+  .text-field input {
+    width: 200px;
+    height: 35px;
+  }
+  .pass {
+    width: 200px;
+    margin: 5px 0;
+    padding: 5px 0;
+  }
+  .btn {
+    width: 200px;
+    height: 35px;
+  }
+  .signup-link {
+    width: 200px;
+    font-size: 12px;
+  }
+}

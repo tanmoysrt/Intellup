@@ -1,0 +1,33 @@
+    /*-------------------------------- FORGOT PASS----------------------------------- */
+    
+    @media (max-width: 1000px) {
+        .content-modal input {
+            width: 60vw;
+            height: 35px;
+            padding: 10px;
+        }
+        .submit-btn,
+        .close-btn {
+            width: 80px;
+        }
+        .pass {
+            font-size: 12px;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .content-modal input {
+            width: 60vw;
+            height: 35px;
+            padding: 5px;
+        }
+        .pass {
+            font-size: 12px;
+        }
+        .submit-btn,
+        .close-btn {
+            width: 60px;
+            height: 30px;
+            font-size: 10px;
+        }
+    }

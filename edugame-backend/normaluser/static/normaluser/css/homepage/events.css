@@ -1,0 +1,116 @@
+.matchChoice {
+  /* border:  1px solid yellow; */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* flex-wrap: wrap; */
+  padding: 3rem;
+}
+
+.match {
+  /* border: 1px solid hotpink; */
+  width: 22rem;
+  height: 25rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 0.8rem;
+  color: white;
+  box-shadow: inset -1px -1px 20px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(to bottom right, #791515, #f44336, #791515);
+  transition: all 1s ease;
+  animation: bgchange 5s infinite;
+  background-size: 400% 400%;
+}
+
+.match:nth-child(2) {
+  background: linear-gradient(to bottom right, #001900, #00e600, #001900);
+  transition: all 1s ease;
+  animation: bgchange 5s infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes bgchange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.match header {
+  text-align: center;
+  padding: 1rem;
+  background-color: none;
+  font-size: 1.7rem;
+}
+
+.match p {
+  text-align: center;
+  line-height: 1.5rem;
+  padding: 1rem 0;
+}
+
+.match p:nth-child(2) {
+  text-align: left;
+}
+
+.match button {
+  transform: translateY(4rem);
+  background: none;
+  border: 2px solid white;
+  padding: 0.6rem 1rem;
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  box-shadow: inset -1px -1px 7px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px black;
+  width: 14rem;
+}
+
+.match button a {
+  font-family: "Rubik", sans-serif;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.match button:hover {
+  background: linear-gradient(to right, #1a7b12, #15ed02, #1a7b12);
+  border: 2px solid white;
+  box-shadow: 0 0 10px black;
+}
+
+.match:first-child button:hover {
+  background: linear-gradient(to right, #791515, #ed0303, #791515);
+}
+
+@media (max-width: 850px) {
+  .matchChoice {
+    padding: 2rem 0.5rem;
+  }
+  .match {
+    width: 45%;
+  }
+}
+@media (max-width: 600px) {
+  .matchChoice {
+    flex-direction: column;
+  }
+  .match {
+    width: 22rem;
+    font-size: 1.3rem;
+  }
+}

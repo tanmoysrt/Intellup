@@ -1,0 +1,396 @@
+{% load static %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/92b21ed5b0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/game.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/question.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/css/game/absolute-header.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.css" %}" />
+    <title>Game</title>
+  </head>
+  <body>
+{#  	<style type="text/css">#}
+{#		#option1, #option2, #option3, #option4{#}
+{#			margin: 4px;#}
+{#			padding: 10px;#}
+{#			/*border: 1px solid black;*/#}
+{#			cursor: pointer;#}
+{#		}#}
+{#		.active{#}
+{#			border: 1px solid skyblue;#}
+{#		}#}
+{#	</style>#}
+
+
+{#  Some hidden fields to use in websocket connection#}
+<input type="hidden" value="{{ request.user.userextendedprofile.id }}" id="user_id">
+<input type="hidden" value="{{ battle_data.id }}" id="battle_id">
+
+  <div id="questionWelcomeScreen">
+      <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <div>
+        <figure>
+          <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure>
+        <span id="points">{{ request.user.userextendedprofile.total_points }}</span>
+        <figure>
+          <a href="{% url "normalUserRechargeWallet" %}"><img src="{% static "normaluser/img/add.png" %}" alt="" /></a>
+        </figure>
+        <figure>
+          <a href="{% url "normalUserProfile" %}"><img style="width: 60px;height: 60px;border-radius: 50%" src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" /></a>
+        </figure>
+      </div>
+    </nav>
+
+    <header class="heading battle-header">{{ battle_data.category.title }}</header>
+
+    <div class="cointainer">
+      <div class="rules box" style="box-shadow: none!important;">
+        <header>Rules :</header>
+        <ul>
+          <li><span class="bold">{{ battle_data.category.no_of_questions }}</span> MCQ Question</li>
+          <li><span class="bold">{{ battle_data.category.max_time }}</span> seconds to solve</li>
+          <li>Evaluation is based on speed and accuracy</li>
+          <li>
+            Winner will get <span class="bold">{{ battle_data.total_points }}</span>
+            <figure>
+              <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+            </figure>
+          </li>
+          <li> <span class="bold">{{ battle_data.total_points|div:2 }}</span>
+            <figure>
+              <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+            </figure> coins will be deducted from your account
+          </li>
+          <li>
+            Greater number of <span class="bold">CORRECT</span> options more
+            valued than lesser <span class="bold">TIME</span> of submission
+          </li>
+        </ul>
+      </div>
+
+      <div class="buttons box" style="box-shadow: none!important;">
+        <button class="double-color-button">
+          <a href="#" onclick="startSearchingParticipant()">
+            <span>Start</span>
+            <i class="fas fa-angle-double-right"></i>
+          </a>
+        </button>
+        <button class="double-color-button">
+          <a href="#">
+            <span>{{ minutes }} : {{ seconds }}</span>
+            <i class="fas fa-stopwatch"></i>
+          </a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+{#<div id="quizscreen" style="display: none">#}
+{#	<div id="question"></div>#}
+{#	<div id="option1" onclick="selectAnswer(1)"></div>#}
+{#	<div id="option2" onclick="selectAnswer(2)"></div>#}
+{#	<div id="option3" onclick="selectAnswer(3)"></div>#}
+{#	<div id="option4" onclick="selectAnswer(4)"></div>#}
+{##}
+{#	<div style="cursor: pointer;" onclick="submitAndNextQuestion()">Submit</div>#}
+{#</div>#}
+
+    <div id="quizscreen" style="display: none">
+        <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <button class="double-color-button size">
+        <a href="#">
+          <span><p id="minutesToFinish">{{ minutes }}</p>&nbsp;:&nbsp;<p id="secondsToFinish">{{ seconds }}</p></span>
+          <i class="fas fa-stopwatch"></i>
+        </a>
+      </button>
+    </nav>
+
+    <div class="absolute-header">
+      <div class="opponent">
+        <div class="image">
+          <img src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" />
+        </div>
+        <div class="name">{{ request.user.username }}</div>
+        <div class="question"><span id="ownQuestionsDone">0</span>/<span id="totalQuestionUser1">?</span></div>
+      </div>
+      <div class="versus">
+        <img src="{% static "normaluser/img/vs.png" %}" alt="" />
+      </div>
+      <div class="opponent">
+        <div class="image">
+          <img src="https://i.pinimg.com/originals/90/15/b7/9015b7ac1e79c4af4b400edc54a9c5d8.png" alt="" id="oponnentImage" />
+        </div>
+        <div class="name" id="oponnentUsername">??</div>
+        <div class="question"><span id="oponnentQuestionsDone">0</span>/<span id="totalQuestionUser2">?</span></div>
+      </div>
+    </div>
+    <!-- <div class="line"></div> -->
+    <header class="heading">Question <span id="questionNowNo">1
+    </span></header>
+    <div class="main">
+      <div class="box question-box">
+        <div class="question-content" id="question"></div>
+      </div>
+
+      <div class="box option-box">
+        <div  id="option1" onclick="selectAnswer(1)"></div>
+        <div  id="option2" onclick="selectAnswer(2)"></div>
+        <div id="option3" onclick="selectAnswer(3)"></div>
+        <div id="option4" onclick="selectAnswer(4)"></div>
+      </div>
+    </div>
+    <div class="button-box">
+      <button class="double-color-button submit" style="cursor: pointer;" onclick="submitAndNextQuestion()">
+        <a href="#" >
+          <span id="BottomButtonText">Next</span>
+        </a>
+      </button>
+    </div>
+    </div>
+
+
+<p id="maxTime" style="display: none">{{ maxTime }}</p>
+
+  <script  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous" ></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"    integrity="sha512-2RDFHqfLZW8IhPRvQYmK9bTLfj/hddxGXQAred2wNZGkrKQkLGj8RCkXfRJPHlDerdHHIzTFaahq4s/P4V6Qig==" crossorigin="anonymous"></script>
+  <script  src="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.js" %}"></script>
+
+    <script>
+        {#All variables#}
+      const userId = $("#user_id").val();
+      const battleId = $("#battle_id").val();
+      var socket; // Socket will be initialized when "Start" button will be clicked
+      var question_set;
+
+      var question_ids;
+      var question_set_length;
+
+      var answerstore;
+      var currentQuestionIndex = 0;
+
+
+
+      {#Search PArticipant#}
+      function startSearchingParticipant() {
+          Notiflix.Loading.Pulse('Searching For Opponents',{ messageFontSize: "20px"});
+          console.log(`User : ${userId} Battle : ${battleId}`);
+          socket = io("http://localhost:3000",{
+              reconnectionDelayMax: 1000,
+              autoConnect : false,
+              auth: {
+                userId: userId,
+                battleId : battleId,
+                classId : {{ classId }},
+                subjectId : {{ subjectId }}
+              }
+        });
+          socket.connect();
+          triggerAllSocketFunction(socket);
+      }
+  </script>
+  <script>
+      function triggerAllSocketFunction(socket) {
+          {#Here all the socket recieve function has listed#}
+
+          socket.on("connect", () => {
+              console.log("Connected To Socket ID : "+socket.id);
+          });
+
+          // It's just a validationfor dev
+          socket.on("wait_for_player",(data)=>{
+              console.log(data["message"]);
+            });
+
+          // It's give use a notice when player found
+          socket.on("found_confirm", (data) => {
+              console.log(data.message);
+            Notiflix.Loading.Remove();setTimeout(function(){Notiflix.Loading.Dots(data.message,{ messageFontSize: "20px"})},100)
+          });
+
+          // Set it's user no whether it's user 1 or 2
+          socket.on("new_userno",(data)=>{
+              console.log(data);
+              socket.emit("set_userno",{
+                  "userNo" : data["userNo"]
+              });
+            });
+
+
+          // This will get the opponent's user id
+          socket.on("notify_match",(data)=>{
+              console.log(data);
+              socket.emit("set_oponnent_id",{
+                  "userId" : data["userId"]
+              });
+
+              $.ajax({
+                url : `/api/userdetails/?id=${data["userId"]}`,
+                type : 'GET',
+                dataType : "json",
+                tryCount : 0,
+                retryLimit : 3,
+                success : function(json) {
+                    document.getElementById("oponnentUsername").innerText = json["username"];
+                    document.getElementById("oponnentImage").src = "/media/"+json["profileimage"];
+
+                },
+                error : function(xhr, textStatus, errorThrown ) {
+                    if (textStatus == 'timeout') {
+                        this.tryCount++;
+                        if (this.tryCount <= this.retryLimit) {
+                            //try again
+                            $.ajax(this);
+                            return;
+                        }
+                        return;
+                    }
+
+                }
+            });
+            });
+
+          socket.on("start_quiz",(data)=>{
+              console.log(data);
+              socket.emit("set_battle_record_id",{
+                  "battleRecordId" : data["realtime_battle_id"]
+              });
+              question_set = data["question_answer_set"];
+              startQuiz();
+          });
+
+          socket.on("oponnent_progress",(data)=>{
+              if(data["submitted"]){
+                  document.getElementById("oponnentQuestionsDone").innerText = question_set_length.toString();
+                  // It will be better if we show something completed in that .Future update
+              }
+              else {
+                  document.getElementById("oponnentQuestionsDone").innerText = data["no_of_questions_submitted"].toString()
+              }
+              console.log(`Oponnent has submitted ${data["no_of_questions_submitted"]} questions`);
+          });
+
+          socket.on("quitgame",(data)=>{
+              window.location.href = data["redirect_link"];
+          })
+      }
+
+  </script>
+  <script>
+      {#Functions will used during the gaming time#}
+        function startQuiz(){
+            Notiflix.Loading.Remove();
+            seralizeIncomingData(question_set);
+            loadQuestion(question_ids[0]);
+            document.getElementById("questionWelcomeScreen").style.display = "none";
+            document.getElementById("quizscreen").style.display = "block";
+            startTimer();
+        }
+
+
+		function seralizeIncomingData(data){
+			question_ids = Object.keys(data);
+			question_set_length = question_ids.length;
+			answerstore = Array(question_set_length).fill(-1);
+			document.getElementById("totalQuestionUser1").innerText = question_set_length;
+			document.getElementById("totalQuestionUser2").innerText = question_set_length;
+		}
+
+		function setAnswerForCurrentQuestion(option){
+			answerstore[currentQuestionIndex] = option;
+		}
+
+		function loadQuestion(i){
+            const tmp_question_to_load = question_set[i];
+            document.getElementById("question").innerHTML = tmp_question_to_load.question;
+			document.getElementById("option1").innerHTML = tmp_question_to_load.option1;
+			document.getElementById("option2").innerHTML = tmp_question_to_load.option2;
+			document.getElementById("option3").innerHTML = tmp_question_to_load.option3;
+			document.getElementById("option4").innerHTML = tmp_question_to_load.option4;
+		}
+
+
+		function selectAnswer(selected_index){
+			for (var i = 1; i <= 4; i++) {
+				if(i == selected_index){
+					document.getElementById(`option${i}`).classList.add("greenGlow");
+					setAnswerForCurrentQuestion(selected_index);
+				}
+				else{
+					document.getElementById(`option${i}`).classList.remove("greenGlow");
+				}
+			}
+		}
+
+		function wipeAnswerSelection(){
+			for (var i = 1; i <= 4; i++) {
+				document.getElementById(`option${i}`).classList.remove("greenGlow");
+			}
+		}
+
+
+		function submitAndNextQuestion() {
+			if(currentQuestionIndex == question_set_length-1){
+				console.log("Time to submit");
+				console.log(answerstore);
+				socket.emit("submit_answer",answerstore);
+				Notiflix.Loading.Pulse("Waiting for opponent's reponse..");
+			}else{
+				console.log(answerstore);
+				currentQuestionIndex++;
+				if(currentQuestionIndex == question_set_length-1){
+				    document.getElementById("BottomButtonText").innerText = "Submit"
+                }
+				wipeAnswerSelection();
+				loadQuestion(question_ids[currentQuestionIndex]);
+                document.getElementById("questionNowNo").innerText = (currentQuestionIndex+1).toString();
+				document.getElementById("ownQuestionsDone").innerText = currentQuestionIndex.toString();
+				socket.emit("notify_answer_submission",currentQuestionIndex);
+			}
+		}
+
+		function startTimer() {
+            const duration = parseInt(document.getElementById("maxTime").innerText);
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10)
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                document.getElementById("minutesToFinish").innerText = minutes.toString();
+                document.getElementById("secondsToFinish").innerText = seconds.toString();
+
+                if (timer <= 0) {
+				    submitAndNextQuestion();
+                }else {
+                    timer -= 1;
+                }
+            }, 1000);
+        }
+
+
+  </script>
+  </body>
+</html>

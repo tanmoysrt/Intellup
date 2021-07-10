@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c06afd5824.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/game/loser.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/loser-responsive.css" %}" />
+    <title>Contest Result</title>
+  </head>
+
+  <body>
+    <div class="container">
+        {% if percentage < 20 %}
+            <div class="message">
+            <h1>BETTER LUCK NEXT TIME</h1>
+          </div>
+            {% else %}
+            <div class="message">
+            <h1>🎉&nbsp;CONGRATULATIONS&nbsp;🎉</h1>
+          </div>
+        {% endif %}
+
+
+      <div class="details">
+
+          {% if percentage < 20 %}
+            <div class="mid">
+              <img src="{% static "normaluser/img/lost.png" %}" alt="" />
+            </div>
+            {% else %}
+            <div class="mid">
+              <img src="{% static "normaluser/img/won.png" %}" alt="" />
+            </div>
+        {% endif %}
+
+
+      </div>
+      <div class="coins">Percentage Scored : {{ percentage }} &nbsp;%&nbsp; </div>
+      <div class="btns">
+        <div class="leave-btn">
+          <button type="button" onclick='window.location.href="/"'>Go Home</button>
+        </div>
+{#        <div class="again-btn">#}
+{#          <button type="submit" onclick='window.location.href="{% url "normalUserStartBattle" battle.battle.id %}"'>Play Again</button>#}
+{#        </div>#}
+      </div>
+    </div>
+  </body>
+</html>

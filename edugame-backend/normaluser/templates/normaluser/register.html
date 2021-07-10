@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Register Page</title>
+</head>
+<body>
+<h1>Register here</h1>
+
+{% if request.user.is_authenticated %}
+    Logged In
+    {% else %}
+    Not logged in
+{% endif %}
+
+{% if message %}
+    {% autoescape off %}
+        {{ message }}
+    {% endautoescape %}
+{% endif %}
+
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <a>Username </a><input name="username"><br>
+    <a>First Name </a><input name="first_name"><br>
+    <a>Last Name </a><input name="last_name"><br>
+    <a>Email </a><input name="email"><br>
+    <a>DOB </a><input type="date" name="dob"><br>
+    <a>Class </a>
+    <select name="present_class">
+        {% for school_class in school_classes %}
+            <option value="{{ school_class.id }}">{{ school_class.title }}</option>
+        {% endfor %}
+    </select><br>
+    <a>Password </a><input type="text" name="pass"><br>
+    <a>Confirm Password</a><input type="text" name="confirm_pass"><br>
+
+    <button type="submit">Register</button>
+</form>
+
+
+</body>
+</html>

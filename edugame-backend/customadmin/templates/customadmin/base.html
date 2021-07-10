@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>| Administrator</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'customadmin/plugins/fontawesome-free/css/all.min.css' %}">
+    <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'customadmin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'customadmin/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+    {% block head %}
+    {% endblock head %}
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed ">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+    </ul>
+      <a class="navbar-brand ml-auto" href="#"><img src="{% static 'normaluser/img/logo.png' %}" height="30px" width="auto" alt="logo"></a>
+
+   <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link btn btn-danger" href="{% url "adminLogoutPage" %}"  role="button"><b style="color: white">Log Out </b><i class="fas fa-sign-out-alt" style="color: white"></i></a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="#" class="brand-link">
+      <img src="{% static 'normaluser/img/logo.png' %}" alt="LocalBazer Logo" class="brand-image  elevation-3"
+           style="opacity: 1">
+      <span class="brand-text font-weight-light">Intellup<small>.in</small></span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+{#            <li class="nav-item">#}
+{#                <a href="{% url "adminMainDashboard" %}" class="nav-link">#}
+{#                  <i class="nav-icon fas fa-tachometer-alt" style="color: #51cf66;"></i>#}
+{#                  <p>#}
+{#                    Dashboard#}
+{#                  </p>#}
+{#                </a>#}
+{#            </li>#}
+{#            <li class="dropdown-divider"></li>#}
+{#            <li class="nav-item">#}
+{#                <a href="{% url "adminMasterDashboard" %}" class="nav-link">#}
+{#                  <i class="nav-icon fas fa-tachometer-alt" style="color: #ff922b;"></i>#}
+{#                  <p>#}
+{#                    Master Leaderboard#}
+{#                  </p>#}
+{#                </a>#}
+{#            </li>#}
+            <li class="dropdown-divider"></li>
+            <li class="nav-item">
+            <a href="/463890854344892836737920/" target="_blank" class="nav-link">
+            <i class="fas fa-user-shield" style="color: #51cf66;"></i>
+              <p>
+                Default Admin Panel
+              </p>
+            </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="nav-header p-1">QUESTION BRANCH</li>
+            <li class="nav-item">
+            <a href="{% url "adminAllQuestions" %}" class="nav-link">
+              <i class="nav-icon fas fa-question-circle" style="color: #339af0;"></i>
+              <p>
+                All Questions
+{#                  <span class="right badge badge-success">45</span>#}
+              </p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url "adminAddNewQuestion" %}" class="nav-link">
+              <i class="nav-icon fas fa-plus" style="color: #51cf66;"></i>
+              <p>
+                Add New Question
+              </p>
+            </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="nav-header p-1">BATTLE</li>
+            <li class="nav-item">
+            <a href="{% url "adminBattleCategory" %}" class="nav-link">
+              <i class="fas fa-clipboard-list" style="color: #845ef7;"></i>
+              <p>
+                Battle Category
+              </p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url "adminBattles" %}" class="nav-link">
+              <i class="fab fa-battle-net" style="color: #51cf66;"></i>
+              <p>
+                Battles
+              </p>
+            </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="nav-header p-1">CONTEST</li>
+            <li class="nav-item">
+            <a href="{% url "adminCreateContest" %}" class="nav-link">
+              <i class="nav-icon fas fa-plus" style="color: #51cf66;"></i>
+              <p>
+                Create Contest
+              </p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url "adminContestConfig" %}" class="nav-link">
+              <i class="fas fa-edit" style="color: #e2c717;"></i>&nbsp;
+              <p>
+                Config Contests
+              </p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url "adminTodayContestStat" %}" class="nav-link">
+              <i class="fas fa-infinity" style="color: #51cf66;"></i>
+              <p>
+                Today's Contest Stat
+              </p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="{% url "adminOldContestStat" %}" class="nav-link">
+              <i class="fas fa-infinity" style="color: #ff922b;"></i>
+              <p>
+                Old Contest Stat
+              </p>
+            </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="nav-header p-1">CONFIGURATION</li>
+            <li class="nav-item">
+            <a href="/463890854344892836737920/datahandler/schoolsubject/" target="_blank" class="nav-link">
+              <i class="fas fa-edit" style="color: #ff922b;"></i>
+              <p>
+                Add & Edit Subjects
+              </p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a href="/463890854344892836737920/datahandler/schoolclass/" target="_blank" class="nav-link">
+              <i class="fas fa-edit" style="color: #ff922b;"></i>
+              <p>
+                Add & Edit Classes
+              </p>
+            </a>
+            </li>
+            <li class="dropdown-divider"></li>
+
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+     <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+      <section class="content mt-5">
+  {% block content %}
+
+  {% endblock content %}
+      </section>
+  </div>
+  <!-- /.content-wrapper -->
+    </div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="{% static 'customadmin/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'customadmin/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'customadmin/js/adminlte.min.js' %}"></script>
+<!-- overlayScrollbars -->
+<script src="{% static 'customadmin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js' %}"></script>
+{#Demo Purpose#}
+<script src="{% static 'customadmin/js/pages/dashboard.js' %}"></script>
+{#Chart JS#}
+{% block js %}
+{% endblock js %}
+</body>
+</html>

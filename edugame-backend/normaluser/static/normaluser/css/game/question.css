@@ -1,0 +1,259 @@
+* {
+  transition: all 0.3s ease;
+}
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Nav bar */
+.navbar {
+  background-color: white !important;
+}
+.size {
+  font-size: 1.2rem;
+  margin: 0.3rem 2rem;
+  background-color: #ff8a00;
+  width: 9rem;
+}
+
+.size a {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cf7000;
+}
+
+.size:hover {
+  background: #cf7000;
+}
+
+.size:hover a {
+  transform: scale(1.1);
+}
+
+.heading {
+  margin-top: 3rem;
+}
+/* glow Class */
+.redGlow {
+  box-shadow: 1px 1px 10px red, inset 1px 1px 10px red;
+  border: none !important;
+}
+
+.greenGlow {
+  box-shadow: 1px 1px 10px lime, inset 1px 1px 10px lime;
+  border: none !important;
+}
+
+/* body */
+.main {
+  /* border: 1px solid black; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin: 4rem 1rem;
+}
+
+.box {
+  padding: 1rem;
+  /* border: 1px solid blue; */
+  min-height: 20rem;
+  max-height: 40rem;
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* For Question part */
+.question-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.question-content {
+  margin: 3rem 1rem;
+  border: 2px solid purple;
+  border-radius: 1.3rem;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  padding: 1.5rem;
+  background-color: whitesmoke;
+}
+
+.question-content p {
+  padding: 1.5rem;
+  max-height: 25rem;
+  overflow-y: auto;
+}
+
+/* For Answer part */
+
+.option-box > div {
+  border: 2px solid purple;
+  padding: 0.9rem;
+  margin: 1.5rem 1rem;
+  border-radius: 1.3rem;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  background-color: whitesmoke;
+  width: 100%;
+}
+
+.option-box > div p {
+  overflow-y: auto;
+  max-height: 8rem;
+  padding: 0.6rem;
+}
+
+.line {
+  position: absolute;
+  width: 0.3rem;
+  height: 31rem;
+  left: 50%;
+  top: 24%;
+  background-color: #69f0ae;
+  border-radius: 5px;
+}
+
+@media (max-width: 850px) {
+  .box {
+    padding: 0.5rem;
+    border-radius: 1rem;
+  }
+  .main {
+    margin: 4rem 0;
+  }
+  .question-content {
+    margin: 3rem 0.5rem;
+    border-radius: 1.3rem;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    padding: 0.5rem;
+    width: 100%;
+  }
+  .option-box > div {
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+  }
+
+  .question-content p {
+    padding: 1rem;
+  }
+}
+
+/* Buttons */
+.button-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem;
+}
+
+.submit {
+  background-color: #0085ff;
+  width: 16rem;
+}
+.submit a {
+  background-color: #0058a9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit:hover {
+  background: #0058a9;
+}
+.submit:hover a {
+  font-size: 3.3rem;
+}
+
+/* Change of layout */
+@media (max-width: 750px) {
+  .line {
+    display: none;
+  }
+  .heading {
+    margin-top: 11rem;
+  }
+  .main {
+    grid-template-columns: 1fr;
+    margin-top: 2rem;
+  }
+  .question-box {
+    margin: 1rem 2rem;
+    padding: 0 1rem;
+    max-height: 35rem;
+  }
+
+  .option-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-top: 0;
+  }
+  .option-box > div {
+    margin: 0;
+    border-radius: 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    margin-top: 0;
+  }
+  .question-box {
+    margin: 1rem;
+    padding: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  html {
+    font-size: 14px;
+  }
+
+  .size {
+    transform: scale(0.7);
+    margin: 0.3rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .submit {
+    width: 13.5rem;
+    font-size: 1.5rem;
+  }
+  .submit:hover a {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .size {
+    transform: scale(0.68);
+  }
+  .question-content {
+    box-shadow: 1px 1px 10px gray;
+  }
+}
+
+
+.size a span{
+  display: flex;
+}

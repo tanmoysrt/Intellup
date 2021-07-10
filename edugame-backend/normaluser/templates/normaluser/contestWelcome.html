@@ -1,0 +1,132 @@
+{% load static %}
+{% load mathfilters %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/92b21ed5b0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/game.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.css" %}" />
+    <title>Game</title>
+  </head>
+  <body>
+  	<style type="text/css">
+		#option1, #option2, #option3, #option4{
+			margin: 4px;
+			padding: 10px;
+			/*border: 1px solid black;*/
+			cursor: pointer;
+		}
+		.active{
+			border: 1px solid skyblue;
+		}
+	</style>
+
+
+{#  Some hidden fields to use in websocket connection#}
+<input type="hidden" value="{{ request.user.userextendedprofile.id }}" id="user_id">
+<input type="hidden" value="{{ battle_data.id }}" id="battle_id">
+
+      <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <div>
+        <figure>
+          <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure>
+        <span id="points">{{ request.user.userextendedprofile.total_points }}</span>
+        <figure>
+          <a href="{% url "normalUserRechargeWallet" %}"><img src="{% static "normaluser/img/add.png" %}" alt="" /></a>
+        </figure>
+        <figure>
+          <a href="{% url "normalUserProfile" %}"><img  src="/media/{{ request.user.userextendedprofile.profileimage }}" class="profileImageNavbar" alt="" /></a>
+        </figure>
+      </div>
+    </nav>
+
+    <header class="heading battle-header">{{ battle_data.category.title }}</header>
+
+    <div class="cointainer">
+      <div class="rules box">
+        <header>Rules :</header>
+        <ul>
+          <li><span class="bold">{{ contest.questionanswerforcontest_set.all | length }}</span> MCQ Question</li>
+          <li><span class="bold"></span>Contest is starting from <strong>{{ contest.starting_from }}</strong></li>
+          <li><span class="bold"></span>Need to submit before <strong>{{ contest.valid_till }}</strong></li>
+          <li>Evaluation is based on speed and accuracy</li>
+          <li>
+            Winner will get <span class="bold">{{ contest.max_point }}</span>
+            <figure>
+              <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+            </figure>
+          </li>
+          <li> <span class="bold">{{ contest.point_to_deduct }}</span>
+            <figure>
+              <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+            </figure> coins will be deducted from your account
+          </li>
+        </ul>
+      </div>
+
+      <div class="buttons box">
+
+          {% if is_started %}
+              {% if is_ended  %}
+                  <button class="double-color-button">
+                  <a href="#" onclick="">
+                    <span>Finished !</span>
+                    <i class="fas fa-angle-double-right"></i>
+                  </a>
+                </button>
+                  {% else %}
+                  <button class="double-color-button">
+                  {% if alreadyPlayed %}
+                      <a href="{% url "normalUserContestResult" battle_history_id %}">
+                      <span>Done</span>
+                        <i class="fas fa-angle-double-right"></i>
+                      </a>
+                      {% else %}
+                      <a href="#" onclick='window.location.href="{% url "normalUserContestMiddleware" contest.id %}"'>
+                          {% if already_started_playing %}
+                              <span>Resume</span>
+                          {% else %}
+                              <span>Start</span>
+                          {% endif %}
+                        <i class="fas fa-angle-double-right"></i>
+                      </a>
+                  {% endif %}
+                    </button>
+              {% endif %}
+
+              {% else %}
+              <button class="double-color-button">
+                  <a href="#" onclick="">
+                    <span>Will Start</span>
+                    <i class="fas fa-angle-double-right"></i>
+                  </a>
+                </button>
+          {% endif %}
+
+      </div>
+    </div>
+
+
+  <script  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous" ></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"    integrity="sha512-2RDFHqfLZW8IhPRvQYmK9bTLfj/hddxGXQAred2wNZGkrKQkLGj8RCkXfRJPHlDerdHHIzTFaahq4s/P4V6Qig==" crossorigin="anonymous"></script>
+  <script  src="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.js" %}"></script>
+
+
+  </body>
+</html>

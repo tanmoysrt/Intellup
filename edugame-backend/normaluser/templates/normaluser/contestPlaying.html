@@ -1,0 +1,218 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/92b21ed5b0.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/game.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/question.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/css/game/absolute-header.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.css" %}" />
+    <title>Playing Contest ...</title></head>
+<body>
+
+<div id="quizscreen" >
+        <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <button class="double-color-button size">
+        <a href="#">
+          <span><p id="hoursToFinish">00</p>&nbsp;:&nbsp;<p id="minutesToFinish">00</p>&nbsp;:&nbsp;<p id="secondsToFinish">00</p></span>
+{#          <i class="fas fa-stopwatch"></i>#}
+        </a>
+      </button>
+    </nav>
+
+    <div class="absolute-header">
+      <div class="opponent">
+        <div class="image">
+          <img src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" />
+        </div>
+        <div class="name">{{ request.user.username }}</div>
+        <div class="question"><span id="ownQuestionsDone">0</span>/<span id="totalQuestionUser1">?</span></div>
+      </div>
+    </div>
+    <!-- <div class="line"></div> -->
+    <header class="heading">Question <span id="questionNowNo">1</span></header>
+    <div class="main">
+      <div class="box question-box">
+        <div class="question-content" id="question"></div>
+      </div>
+
+      <div class="box option-box">
+        <div  id="option1" onclick="selectAnswer(1)"></div>
+        <div  id="option2" onclick="selectAnswer(2)"></div>
+        <div id="option3" onclick="selectAnswer(3)"></div>
+        <div id="option4" onclick="selectAnswer(4)"></div>
+      </div>
+    </div>
+    <div class="button-box">
+      <button class="double-color-button submit" style="cursor: pointer;" onclick="NextQuestion()">
+        <a  >
+          <span id="BottomButtonText">Next</span>
+        </a>
+      </button>
+    </div>
+    </div>
+
+
+
+<p style="display: none" id="queston_answer_set">{{ question_answer_set }}</p>
+<p style="display: none" id="exsistingTimeForContest">{{ exsistingTimeForContest }}</p>
+
+<script  src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous" ></script>
+<script  src="{% static "normaluser/plugins/Notiflix-2.7.0/dist/notiflix-2.7.0.min.js" %}"></script>
+
+<script>
+
+
+    var question_set, question_ids, question_set_length, answerstore, currentQuestionIndex = 0;
+
+    function seralizeIncomingData(){
+        var data = JSON.parse($("#queston_answer_set").text());
+        question_set = data;
+        console.log(data);
+        question_ids = Object.keys(data);
+        question_set_length = question_ids.length;
+        document.getElementById("totalQuestionUser1").innerText = question_set_length.toString();
+        answerstore = Array(question_set_length).fill(-1);
+        Notiflix.Loading.Remove();
+        startTimer();
+    }
+
+    function loadQuestion(i){
+        var tmp_question_to_load = question_set[i];
+        document.getElementById("question").innerHTML = tmp_question_to_load.question;
+        document.getElementById("option1").innerHTML = tmp_question_to_load.option1;
+        document.getElementById("option2").innerHTML = tmp_question_to_load.option2;
+        document.getElementById("option3").innerHTML = tmp_question_to_load.option3;
+        document.getElementById("option4").innerHTML = tmp_question_to_load.option4;
+    }
+
+
+    function selectAnswer(selected_index){
+			for (var i = 1; i <= 4; i++) {
+				if(i == selected_index){
+					document.getElementById(`option${i}`).classList.add("greenGlow");
+					setAnswerForCurrentQuestion(selected_index);
+				}
+				else{
+					document.getElementById(`option${i}`).classList.remove("greenGlow");
+				}
+			}
+    }
+
+    function setAnswerForCurrentQuestion(option){
+        answerstore[currentQuestionIndex] = option;
+    }
+
+    function wipeAnswerSelection(){
+			for (var i = 1; i <= 4; i++) {
+				document.getElementById(`option${i}`).classList.remove("greenGlow");
+			}
+    }
+
+
+    function NextQuestion() {
+        if(currentQuestionIndex === question_set_length-1){
+            console.log("Time to submit");
+            console.log(answerstore);
+            Notiflix.Loading.Pulse("Submitting....");
+            submitContest();
+
+        }else{
+            console.log(answerstore);
+            currentQuestionIndex++;
+            wipeAnswerSelection();
+            loadQuestion(question_ids[currentQuestionIndex]);
+            document.getElementById("ownQuestionsDone").innerText = currentQuestionIndex.toString();
+            document.getElementById("questionNowNo").innerText = (currentQuestionIndex+1).toString();
+            if(currentQuestionIndex === question_set_length-1){
+                document.getElementById("BottomButtonText").innerText = "Submit";
+            }else document.getElementById("BottomButtonText").innerText = "Next";
+        }
+    }
+
+    function submitContest() {
+        var tmp = {};
+        tmp["questions_id"] = question_ids;
+        tmp["answers_id"] = answerstore;
+
+        $.ajax({
+            url : window.location.href.toString().replace("play","submit"),
+            type : 'POST',
+            data :  JSON.stringify(tmp),
+            contentType : "application/json",
+            dataType : "json",
+            tryCount : 0,
+            retryLimit : 3,
+            success : function(json) {
+                console.log(json)
+                window.location.href = json["redirect_url"];
+            },
+            error : function(xhr, textStatus, errorThrown ) {
+                if (textStatus == 'timeout') {
+                    this.tryCount++;
+                    if (this.tryCount <= this.retryLimit) {
+                        //try again
+                        $.ajax(this);
+                        return;
+                    }
+                    return;
+                }
+                if (xhr.status == 500) {
+                    //handle error
+                } else {
+                    //handle error
+                }
+            }
+        });
+    }
+
+    function startTimer() {
+        const duration = parseInt(document.getElementById("exsistingTimeForContest").innerText);
+        let timer = duration, hours, minutes, seconds;
+        setInterval(function () {
+                hours = parseInt((timer % (60*60*24))/(60*60),10)
+                minutes = parseInt((timer % (60*60))/60, 10)
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                document.getElementById("hoursToFinish").innerText = hours.toString();
+                document.getElementById("minutesToFinish").innerText = minutes.toString();
+                document.getElementById("secondsToFinish").innerText = seconds.toString();
+
+                if (timer <= 0) {
+				    submitContest();
+                }else {
+                    timer -= 1;
+                }
+            }, 1000);
+        }
+
+    $(document).ready(function (){
+        Notiflix.Loading.Circle("Loading Questions")
+        seralizeIncomingData();
+        loadQuestion(1);
+    })
+
+
+
+</script>
+
+</body>
+
+</html>

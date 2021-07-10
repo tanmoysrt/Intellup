@@ -1,0 +1,84 @@
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+  height: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.testimonilas {
+  padding: 1rem;
+}
+
+.testimonilas > div {
+  display: flex;
+  flex-direction: row;
+  padding-top: 6rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 50rem;
+}
+
+/* User Boxes */
+.testimonilas .box {
+  border-radius: 1rem;
+  box-shadow: 10px 5px 9px lightgrey, 1px 1px 10px black;
+  min-width: 27rem;
+  position: relative;
+  padding: 1rem 2rem;
+  height: 30rem;
+  margin: 8rem 1.5rem;
+}
+
+/* Users Profile picture */
+.dp {
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  left: 34%;
+  top: -6.4rem;
+}
+
+.dp img {
+  width: 150px;
+  border-radius: 50%;
+  border: 5px solid lightgreen;
+  background-color: white;
+  padding: 10px;
+}
+
+
+/* Box inside text  */
+
+.testimonilas .box header {
+  text-align: center;
+  margin-top: 4.7rem;
+  font-size: 1.7rem;
+}
+
+.testimonilas .box small {
+  display: block;
+  text-align: center;
+  padding: 0.4rem;
+  color: darkgrey;
+}
+
+.testimonilas .box p {
+  padding: 2rem 1rem;
+  line-height: 1.5rem;
+  color: grey;
+}

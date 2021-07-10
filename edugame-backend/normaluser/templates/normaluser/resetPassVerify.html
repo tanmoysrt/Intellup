@@ -1,0 +1,62 @@
+{#<html>#}
+{#<body>#}
+{#{% if message %}#}
+{#    {% autoescape off %}#}
+{#        {{ message }}#}
+{#    {% endautoescape %}#}
+{#{% endif %}#}
+{##}
+{##}
+{#<form method="post">#}
+{#    {% csrf_token %}#}
+{#    <a>Password</a><input type="text" name="pass"><br>#}
+{#    <a>Confirm Password</a><input type="text" name="confirm_pass"><br>#}
+{#    <button type="submit">Change password</button>#}
+{#</form>#}
+{##}
+{#</body>#}
+{#</html>#}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c06afd5824.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/change-pass.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/css/change-pass-responsive.css" %}">
+    <title>Change Password</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="modal-forgot">
+            <div class="content-modal">
+                <h1>Change your password</h1>
+                {% if message %}
+                    {% autoescape off %}
+                        <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                        </div>
+                    {% endautoescape %}
+                {% endif %}
+                <form method="post">
+                {% csrf_token %}
+                <input type="password" placeholder="Enter your password" name="pass" required>
+                <input type="password" placeholder="Confirm your password" name="confirm_pass" required>
+                <button class="submit-btn" type="submit">Change Password</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

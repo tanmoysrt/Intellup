@@ -1,0 +1,146 @@
+/* Cards  */
+
+.battle-box {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid blue; */
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+/* Changes */
+/* Override */
+.card{
+  box-shadow: none!important;
+  text-shadow: 1px 1px #0000003d!important;
+}
+
+.card-button{
+  box-shadow: none!important;
+  text-shadow: 1px 1px #00000033!important;
+}
+.heading{
+  margin-top: 50px;
+}
+
+/* Override end */
+
+.card-adjust {
+  height: 24rem;
+  width: 22rem;
+}
+
+.card-adjust header {
+  top: 3rem;
+  font-size: 1.7rem;
+}
+
+.card > div {
+  position: relative;
+  bottom: -11rem;
+}
+
+.cost {
+  /* border: 1px solid gold; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Rubik", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.cost figure {
+  /* border: 1px solid gold; */
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cost figure img {
+  /* border: 1px solid indigo; */
+  width: 100%;
+  transform: rotateX(25deg);
+}
+
+.button-adjust {
+  bottom: -16rem;
+}
+
+/* Adding Colors */
+
+/* All Color Has Been changes according to design */
+
+/* First card blue */
+.card:nth-child(3n + 1) {
+/* Rectangle 42 */
+background: radial-gradient(97% 74.64% at -6.4% -9.79%, #0089D6 0%, #003451 100%);
+border-radius: 15px;
+}
+
+.card:nth-child(3n + 1) button {
+/* Rectangle 43 */
+background: linear-gradient(180deg, #0079BD 0%, #004369 100%);
+border-radius: 20px;
+}
+/* .card:nth-child(3n + 1) button:hover {
+  background: linear-gradient(#004267, #0079bd, #004267);
+} */
+
+/* second card yellow */
+
+.card:nth-child(3n + 2) {
+/* Rectangle 42 */
+background: radial-gradient(97% 74.64% at -6.4% -9.79%, #FFEA39 0%, #FFA31C 100%);
+border-radius: 15px;
+}
+.card:nth-child(3n + 2) button {
+/* Rectangle 43 */
+background: linear-gradient(180deg, #FFEA3C 0%, #FFC73D 100%);
+border-radius: 20px;
+}
+/* .card:nth-child(3n + 2) button:hover {
+  background: linear-gradient(#f4900c, #f5f500, #f4900c);
+} */
+
+/* Third card violet */
+.card:nth-child(3n) {
+/* Rectangle 42 */
+background: radial-gradient(97% 74.64% at -6.4% -9.79%, #9761EF 0%, #231736 100%);
+border-radius: 15px;
+}
+
+.card:nth-child(3n + 3) button {
+/* Rectangle 43 */
+background: linear-gradient(180deg, #8455D0 0%, #462777 100%);
+border-radius: 20px;
+}
+
+
+/* .card:nth-child(3n + 3) button:hover {
+  background: linear-gradient(#231736, #8354cf, #231736);
+} */
+
+/* Media query for cards */
+
+@media (max-width: 590px) {
+  .card {
+    height: 22rem;
+  }
+  .card header {
+    top: 2rem;
+  }
+
+  .card > div {
+    bottom: -7rem;
+  }
+
+  .card-button {
+    bottom: -12rem;
+  }
+}

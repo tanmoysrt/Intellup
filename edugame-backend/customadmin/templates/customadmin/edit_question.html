@@ -1,0 +1,166 @@
+{% extends "customadmin/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "customadmin/plugins/summernote/summernote-bs4.min.css" %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+        {% if message %}
+          {% autoescape off %}
+            {{ message }}
+          {% endautoescape %}
+        {% endif %}
+        <div class="row">
+          <!-- left column -->
+          <div class="col-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Question No. {{ record.id }}</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post">
+              {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                        <label>Enter Question</label>
+                        <textarea class="form-control" id="summernote" style="display: none;" name="question" required>{{ record.question }}</textarea>
+                      </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>Enter Option 1</label>
+                            <textarea class="form-control" id="summernoteOption1" style="display: none;" name="option1" required>{{ record.option1 }}</textarea>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Enter Option 2</label>
+                            <textarea class="form-control" id="summernoteOption2" style="display: none;" name="option2" required>{{ record.option2 }}</textarea>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>Enter Option 3</label>
+                            <textarea class="form-control" id="summernoteOption3" style="display: none;" name="option3">{{ record.option3 }}</textarea>
+                          </div>
+                        <div class="form-group col-6">
+                            <label>Enter Option 4</label>
+                            <textarea class="form-control" id="summernoteOption4" style="display: none;" name="option4">{{ record.option4 }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select correct option</label>
+                        <select class="form-control" name="correct_answer_option" required>
+                            {% if record.correct_answer_option == 1 %}
+                                <option value="1" selected>Option 1</option>
+                                {% else %}
+                                <option value="1">Option 1</option>
+                            {% endif %}
+                            {% if record.correct_answer_option == 2 %}
+                                <option value="2" selected>Option 2</option>
+                                {% else %}
+                                <option value="2">Option 2</option>
+                            {% endif %}
+                            {% if record.correct_answer_option == 3 %}
+                                <option value="3" selected>Option 3</option>
+                                {% else %}
+                                <option value="3">Option 3</option>
+                            {% endif %}
+                            {% if record.correct_answer_option == 4 %}
+                                <option value="4" selected>Option 4</option>
+                                {% else %}
+                                <option value="4">Option 1</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>Difficulty Level</label>
+                            <select class="form-control" name="difficulty" required>
+                                {% for level in levels %}
+                                    {% if record.difficulty == level.0 %}
+                                        <option value="{{ level.0 }}" selected>{{ level.1 }}</option>
+                                        {% else %}
+                                        <option value="{{ level.0 }}">{{ level.1 }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Points</label>
+                            <input type="number" class="form-control" name="points" value={{ record.points }} required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>Select subject</label>
+                            <select class="form-control" name="subject" required>
+                                {% for subject in subjects %}
+                                    {% if record.school_subject_id == subject.id %}
+                                        <option value="{{ subject.id }}" selected>{{ subject.title }}</option>
+                                        {% else %}
+                                        <option value="{{ subject.id }}">{{ subject.title }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Select class</label>
+                            <select class="form-control" name="class" required>
+                                {% for class in classes %}
+                                    {% if record.school_class_id == class.id %}
+                                        <option value="{{ class.id }}" selected>{{ class.title }}</option>
+                                        {% else %}
+                                        <option value="{{ class.id }}">{{ class.title }}</option>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="reset" style="float: left;" class="btn btn-secondary">Reset</button>
+                    <button type="submit" style="float: right;" class="btn btn-primary">Edit Question</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+            <!-- general form elements -->
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!--/.col (right) -->
+        </div>
+{% endblock %}
+
+
+{% block js %}
+<!-- Summernote -->
+    <script src="{% static "customadmin/plugins/summernote/summernote-bs4.min.js" %}"></script>
+    <script>
+
+      $(function () {
+        // Summernote
+        $('#summernote').summernote();
+        $('#summernoteOption1').summernote();
+        $('#summernoteOption2').summernote();
+        $('#summernoteOption3').summernote();
+        $('#summernoteOption4').summernote();
+      });
+    </script>
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>
+{% endblock %}

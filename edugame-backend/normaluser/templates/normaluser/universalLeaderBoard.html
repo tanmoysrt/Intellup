@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/92b21ed5b0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/universalLeaderboard/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/universalLeaderboard/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/universalLeaderboard/universalLeaderBoard.css" %}" />
+    <title>LeaderBoard</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <div>
+        <figure>
+          <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure>
+        <span id="points">{{ request.user.userextendedprofile.total_points }}</span>
+        <figure>
+          <a href="{% url "normalUserRechargeWallet" %}"><img src="{% static "normaluser/img/add.png" %}" alt="" /></a>
+        </figure>
+        <figure>
+          <a href="{% url "normalUserProfile" %}"><img style="width: 60px;height: 60px;border-radius: 50%" src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" /></a>
+        </figure>
+      </div>
+    </nav>
+    <div class="top">
+      <header class="heading leaderheader">
+        LeaderBoard <i class="fas fa-shield-alt"></i>
+      </header>
+    </div>
+
+    <div class="rowHeading">
+      <div class="middle bold">Rank</div>
+      <div class="middle bold">Username</div>
+      <div class="middle bold">Score</div>
+    </div>
+
+    <div class="table">
+        {% for i in leaderboardMembers %}
+              <div class="row">
+              <div class="left">{{ forloop.counter }}</div>
+                <div class="left">
+                  <div class="dp">
+                    <img src="/media/{{ i.profileimage }}" alt="" />
+                  </div>
+                  <div>{{ i.user_base_profile.username }}</div>
+                </div>
+                <div class="left">{{ i.score_contest }}</div>
+              </div>
+        {% endfor %}
+
+
+
+    </div>
+  </body>
+</html>

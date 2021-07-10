@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/game/style/details.css" />
+    <link rel="stylesheet" href="/game/style/details-responsive.css" />
+    <title>Please Fill Your Details</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="heading">
+        <h1>Welcome !</h1>
+        <h1>Please fill up the details</h1>
+      </div>
+      <div class="details">
+        <div class="col-1">
+          <div class="input-field">
+            <label>First Name<sup style="color: red">*</sup></label>
+            <input type="text " placeholder="First Name " required />
+          </div>
+          <div class="input-field">
+            <label>Last Name<sup style="color: red">*</sup></label>
+            <input type="text " placeholder="Last Name " required />
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="input-field">
+            <label>Class<sup style="color: red">*</sup></label>
+            <input list="classes " placeholder="Class " />
+            <datalist id="classes ">
+              <option value="9 "></option>
+              <option value="10 "></option>
+              <option value="11 "></option>
+              <option value="12 "></option>
+              <option value="Drop Year "></option>
+            </datalist>
+          </div>
+          <div class="input-field">
+            <label>Date of Birth<sup style="color: red">*</sup></label>
+            <input
+              class="date"
+              type="date"
+              name=""
+              id=""
+              placeholder="dd-mm-yyyy"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+        <button type="submit ">Done</button>
+      </div>
+    </div>
+  </body>
+</html>

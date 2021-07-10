@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/92b21ed5b0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/contests/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/contests/events.css" %}" />
+    <title>Event</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <div>
+        <figure>
+        <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure>
+        <span id="points">{{ request.user.userextendedprofile.total_points }}</span>
+        <figure>
+          <a href="{% url "normalUserRechargeWallet" %}"><img src="{% static "normaluser/img/add.png" %}" alt="" /></a>
+        </figure>
+        <figure>
+          <a href="{% url "normalUserProfile" %}"><img style="width: 60px;height: 60px;border-radius: 50%" src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" /></a>
+        </figure>
+      </div>
+    </nav>
+
+    <header class="heading">Active Contest</header>
+
+    <div class="cointainer">
+
+        {% for contest in contest_list %}
+              <div class="event-box" onclick='window.location.href="{% url "normalUserContestWelcome" contest.id %}"'>
+                <header class="bold">{{ contest.title }}</header>
+                <div class="body">
+                  <span class="subheading">{{ contest.school_subject }}</span>
+                  <span>Valid Till <strong>{{ contest.valid_till }}</strong></span>
+                </div>
+              </div>
+        {% endfor %}
+
+
+
+
+
+    </div>
+  </body>
+</html>

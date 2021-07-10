@@ -1,0 +1,138 @@
+/* @media (max-width: 1024px) {
+    .arrow-left img {
+        height: 8vh;
+    }
+} */
+
+@media only screen and (max-width: 800px) {
+    .menu {
+        width: 20%;
+        height: 70%;
+        padding-top: 2vh;
+    }
+    .btns {
+        width: 100%;
+        height: 10%;
+        margin: 10px 0;
+        padding-left: 10px;
+    }
+    .btns button {
+        height: 90%;
+        width: 80%;
+        font-size: 2.7vw;
+        border-radius: 1vw;
+    }
+    .arrow-left img {
+        height: 5vw;
+    }
+    .content {
+        width: 70%;
+        height: 70%;
+    }
+    .heading {
+        width: 100%;
+        height: 15%;
+        padding: 3vw;
+    }
+    .heading h1 {
+        font-size: 6vw;
+    }
+    .box {
+        height: 85%;
+        border-radius: 25px;
+    }
+    .box-img img {
+        width: 24vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        padding-top: 7vh;
+        align-items: flex-start;
+    }
+    .menu {
+        width: 20%;
+        height: 70%;
+        padding-top: 2vh;
+    }
+    .btns {
+        width: 100%;
+        height: 10%;
+        margin: 10px 0;
+        padding-left: 10px;
+    }
+    .btns button {
+        height: 90%;
+        width: 80%;
+        font-size: 2.7vw;
+        border-radius: 1vw;
+    }
+    .arrow-left img {
+        height: 7vw;
+    }
+    .content {
+        width: 70%;
+        height: 70%;
+    }
+    .heading {
+        width: 100%;
+        height: 15%;
+        padding: 3vw;
+    }
+    .heading h1 {
+        font-size: 6vw;
+    }
+    .box {
+        height: 85%;
+        border-radius: 17px;
+    }
+    .box-img img {
+        width: 24vw;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .container {
+        padding-top: 7vh;
+        align-items: flex-start;
+    }
+    .menu {
+        width: 25%;
+        height: 60%;
+    }
+    .btns {
+        width: 100%;
+        height: 10%;
+        margin: 7px 0;
+        padding-left: 5px;
+    }
+    .btns button {
+        height: 80%;
+        width: 70%;
+        font-size: 3.7vw;
+        border-radius: 1.3vw;
+    }
+    .arrow-left img {
+        height: 10vw;
+    }
+    .content {
+        width: 70%;
+        height: 60%;
+    }
+    .heading {
+        width: 100%;
+        height: 20%;
+        padding: 2vw;
+    }
+    .heading h1 {
+        font-size: 8vw;
+    }
+    .box {
+        height: 90%;
+        border-radius: 14px;
+    }
+    .box-img img {
+        width: 32vw;
+    }
+}

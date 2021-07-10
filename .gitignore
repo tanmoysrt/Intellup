@@ -1,0 +1,11 @@
+edugame_realtime/node_modules/
+edugame-backend/venv/
+edugame-backend/.idea/
+edugame-backend/edugame/.env
+venv/
+*.pyc
+*.pyo
+*.log
+*.pot
+!**/__pycache__/
+.env

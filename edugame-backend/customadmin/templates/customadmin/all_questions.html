@@ -1,0 +1,90 @@
+{% extends "customadmin/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'customadmin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'customadmin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+{% endblock head %}
+
+
+{% block content %}
+<div class="container-fluid">
+    {% if message %}
+        {% autoescape off %}
+            {{ message }}
+        {% endautoescape %}
+    {% endif %}
+    <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">All Questions</h3>
+        </div>
+        <div class="card-body">
+          <table id="tb" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Subject</th>
+                  <th>Class</th>
+                  <th>Difficulty</th>
+                  <th>Points</th>
+                  <th>Last Update</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for question in questions %}
+                <tr>
+                    <td>{{ question.id }}</td>
+                    <td>{{ question.school_subject.title }}</td>
+                    <td>{{ question.school_class.title }}</td>
+                    <td>{{ question.get_difficulty_display }}</td>
+                    <td>{{ question.points }}</td>
+                    <td>{{ question.updated_on }}</td>
+                    <td><a href="{% url "adminEditQuestion" question.id %}" class="btn btn-warning"><i class="fas fa-edit"></i>&nbsp;Edit</a></td>
+                    <td><a class="btn btn-danger" href="?delete_id={{ question.id }}"><i class="fas fa-trash-alt"></i>&nbsp;Delete</a></td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+            <tfoot>
+              <tr>
+                  <th>Id</th>
+                  <th>Subject</th>
+                  <th>Class</th>
+                  <th>Difficulty</th>
+                  <th>Points</th>
+                  <th>Last Update</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'customadmin/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'customadmin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'customadmin/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'customadmin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+
+    <script>
+      $(function () {
+
+        $('#tb').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": true,
+          "ordering": true,
+          "info": false,
+          "autoWidth": false,
+          "responsive": true,
+        });
+      });
+    </script>
+{% endblock js %}

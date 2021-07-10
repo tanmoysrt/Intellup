@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/c06afd5824.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/game/winner.css" %}" />
+    <link rel="stylesheet" href="/{% static "normaluser/css/game/winner-responsive.css" %}" />
+    <title>You Won</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="message">
+        <h1>YAY ! YOU WON</h1>
+      </div>
+      <div class="details">
+
+        <div class="mid">
+          <img src="{% static "normaluser/img/won.png" %}" alt="" />
+        </div>
+
+      </div>
+      <div class="coins">Coins earned : {{ coins_earned }}&nbsp;&nbsp; <figure>
+          <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure></div>
+      <div class="btns">
+        <div class="leave-btn">
+          <button type="button" onclick='window.location.href="/"'>Leave</button>
+        </div>
+        <div class="again-btn">
+          <button type="submit" onclick='window.location.href="{% url "normalUserStartBattle" battle.battle.id %}"'>Play Again</button>
+        </div>
+      </div>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+  <script>
+      var duration = 15 * 1000;
+var animationEnd = Date.now() + duration;
+var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+var interval = setInterval(function() {
+  var timeLeft = animationEnd - Date.now();
+
+  if (timeLeft <= 0) {
+    return clearInterval(interval);
+  }
+
+  var particleCount = 50 * (timeLeft / duration);
+  // since particles fall down, start a bit higher than random
+  confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+  confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+}, 250);
+  </script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c06afd5824.js" crossorigin="anonymous"></script>
+            <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "normaluser/css/profile/profile.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/css/profile/profile-details.css" %}">
+    <link rel="stylesheet" href="{% static "normaluser/css/profile/profile-responsive.css" %}">
+    <title>Profile - Details</title>
+</head>
+
+<body>
+
+        <div class="container">
+            <!-- Changes -->
+            <div id="overlay">
+                <div class="menu" >
+                    <div class="btns active">
+                        <button style="background-color: white; color: #000;"> Details</button>
+                    </div>
+                <div class="btns">
+                    <button> <a href="{% url "normalUserWallet" %}">Wallet</a> </button>
+                </div>
+                <div class="btns">
+                    <button> <a href="{% url "normalUserProfileStats" %}">Stats</a> </button>
+                </div>
+                <div class="btns">
+                    <button ><a href="{% url "normalUserProfileSettings" %}">Settings</a></button>
+                </div>
+                </div>
+            </div>
+    
+            <div class="menu" id="menuForDesktop">
+                <div class="btns active">
+                    <button style="background-color: white; color: #000;"> Details</button>
+                    <div class="arrow-left">
+                        <img src="{% static "normaluser/img/triangle.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="btns">
+                    <button> <a href="{% url "normalUserWallet" %}">Wallet</a> </button>
+                </div>
+                <div class="btns">
+                    <button> <a href="{% url "normalUserProfileStats" %}">Stats</a> </button>
+                </div>
+                <div class="btns">
+                    <button ><a href="{% url "normalUserProfileSettings" %}">Settings</a></button>
+                </div>
+            </div>
+    
+    
+    <!-- Changes End -->
+    
+        <div class="content">
+            <div class="heading">
+                <h1>Profile</h1>
+                <a id="menuIcon" onclick="showMenu()"><i class="fas fa-bars fa-2x"></i></a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="{% static "normaluser/img/details.png" %}" alt="">
+                </div>
+                <div class="box-data">
+                    <div class="user-dp">
+                        <img style="width: 90px;height: 90px;border-radius: 50%" src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" />
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#addNewPicture" >Add New Picture</button>
+                    </div>
+                    <div class="user-details">
+                        <p><b>{{ request.user.username }}</b></p>
+                        <p>{{ request.user.userextendedprofile.present_class.title }}</p>
+                    </div>
+                    <div class="edit-link">
+                        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editProfileDetails">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="modal fade" id="addNewPicture" tabindex="-1" aria-labelledby="addNewPicture" aria-hidden="true">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eaddNewPictureLabel">Upload New Picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+          <div class="mb-3">
+            <label for="profile-picture" class="col-form-label">Select Profile Picture</label>
+            <input type="file"  accept="image/*"  class="form-control" id="profile-picture" name="profile_picture" required>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Upload Image</button>
+      </div>
+    </div>
+  </div>
+    </form>
+</div>
+
+<div class="modal fade" id="editProfileDetails" tabindex="-1" aria-labelledby="editProfileDetails" aria-hidden="true">
+    <form method="post" >
+        {% csrf_token %}
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProfileDetailsLabel">Edit Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+          <div class="mb-3">
+            <label for="first_name" class="col-form-label">First Name</label>
+            <input type="text"   class="form-control" id="first_name" name="first_name" value="{{ request.user.first_name }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="last_name" class="col-form-label">Last Name</label>
+            <input type="text"   class="form-control" id="last_name" name="last_name" value="{{ request.user.last_name }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="dob" class="col-form-label">Date Of Birth</label>
+            <input type="date"  class="form-control" id="dob" name="dob" value="{{ request.user.userextendedprofile.dob|date:"Y-m-d" }}" required>
+          </div>
+          <div class="mb-3">
+            <label for="dob" class="col-form-label">Select Class</label>
+              <select name="class" class="form-control" required>
+                  <option  disabled>SELECT CLASS</option>
+                  {% for class in classes %}
+                      {% if class.id == request.user.userextendedprofile.present_class_id %}
+                          <option value="{{ class.id }}" selected>{{ class.title }}</option>
+                      {% else %}
+                            <option value="{{ class.id }}">{{ class.title }}</option>
+                      {% endif %} 
+                  {% endfor %}
+
+              </select>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Edit Profile</button>
+      </div>
+    </div>
+  </div>
+    </form>
+</div>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function showMenu() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+@media (max-width: 1000px) {
+    .message {
+        width: 702px;
+    }
+    .message h1 {
+        font-size: 42px;
+    }
+    .left,
+    .mid,
+    .right {
+        width: 234px;
+        height: 220px;
+    }
+    .details {
+        margin: 24px 0 20px 0;
+        width: 702px;
+        height: 220px;
+    }
+    .details h1 {
+        font-size: 14px;
+    }
+    .left h1,
+    .right h1 {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .left p,
+    .right p {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+    .left,
+    .mid,
+    .right {
+        padding: 24px;
+    }
+    .coins {
+        height: 42px;
+        margin-bottom: 16px;
+        width: 702px;
+        font-size: 22px;
+    }
+    .btns {
+        width: 702px;
+        height: 60px;
+    }
+    .btns button {
+        height: 54px;
+        width: 160px;
+        margin: 0 32px;
+        border-radius: 17px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 702px) {
+    .message {
+        width: 402px;
+    }
+    .message h1 {
+        font-size: 32px;
+    }
+    .left,
+    .mid,
+    .right {
+        width: 134px;
+        height: 130px;
+    }
+    .details {
+        margin: 18px 0 16px 0;
+        width: 402px;
+        height: 130px;
+    }
+    .left h1,
+    .right h1 {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    .left p,
+    .right p {
+        font-size: 9px;
+        margin-bottom: 16px;
+    }
+    .left,
+    .right {
+        border-radius: 12px;
+        padding: 31px 14px;
+    }
+    .mid {
+        padding: 22px;
+    }
+    .coins {
+        height: 32px;
+        margin-bottom: 12px;
+        width: 402px;
+        font-size: 16px;
+    }
+    .btns {
+        width: 402px;
+        height: 48px;
+    }
+    .btns button {
+        height: 40px;
+        width: 120px;
+        margin: 0 26px;
+        border-radius: 14px;
+        font-size: 14px;
+    }
+    .leave-btn button {
+        border: solid 7px #ff4d4d;
+    }
+    .again-btn button {
+        border: solid 7px #00ff19;
+    }
+    .leave-btn button:active,
+    .again-btn button:active {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 402px) {
+    .message {
+        width: 300px;
+        margin-bottom: 32px;
+    }
+    .message h1 {
+        font-size: 20px;
+    }
+    .left,
+    .mid,
+    .right {
+        width: 100px;
+        height: 110px;
+        padding: 24px;
+    }
+    .details {
+        margin: 18px 0 16px 0;
+        width: 300px;
+        height: 110px;
+    }
+    .mid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mid img {
+        height: 90%;
+        width: 150%;
+    }
+    .left h1,
+    .right h1 {
+        font-size: 9px;
+        margin-bottom: 3px;
+    }
+    .left p,
+    .right p {
+        font-size: 8px;
+        margin-bottom: 10px;
+    }
+    .left,
+    .right {
+        border-radius: 7px;
+        padding: 28px 10px;
+    }
+    .coins {
+        height: 32px;
+        margin-bottom: 20px;
+        width: 300px;
+        font-size: 16px;
+    }
+    .btns {
+        width: 300px;
+        height: 48px;
+        margin-bottom: 200px;
+    }
+    .btns button {
+        height: 40px;
+        width: 120px;
+        margin: 0 26px;
+        border-radius: 14px;
+        font-size: 14px;
+    }
+    .leave-btn button {
+        border: solid 7px #ff4d4d;
+    }
+    .again-btn button {
+        border: solid 7px #00ff19;
+    }
+    .leave-btn button:active,
+    .again-btn button:active {
+        font-size: 18px;
+    }
+}

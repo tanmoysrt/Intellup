@@ -1,0 +1,164 @@
+/* width */
+.table::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.table::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.table::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+.table::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.top {
+  background-color: #006096;
+}
+
+#LeagueName {
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+.leaderheader {
+  /* border: 1px solid black; */
+  color: white;
+  padding-top: 1.5rem;
+  font-size: 4rem;
+}
+
+.buttonBox {
+  /* border: 1px solid green; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 4.4rem;
+}
+
+.batch {
+  height: 5rem;
+  width: 25%;
+  font-size: 4rem;
+  color: #cd7f32;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Colors to batches */
+.batch:nth-child(2) {
+  color: silver;
+}
+.batch:nth-child(3) {
+  color: gold;
+}
+
+.active {
+  background-color: white;
+  border-radius: 1rem 1rem 0.1rem 0.1rem;
+}
+
+.active i {
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px tomato;
+}
+
+/* Table */
+
+.rowHeading {
+  display: grid;
+  grid-template-columns: 6fr 1fr 1fr;
+  margin: 1rem 2rem;
+  margin-bottom: 0;
+}
+
+.table {
+  height: 15rem;
+  overflow-y: auto;
+  background-color: whitesmoke;
+}
+
+.row {
+  border: 1px solid rgba(128, 128, 128, 0.507);
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 15fr 3fr 3fr;
+  margin: 1rem 2rem;
+  background-color: white;
+}
+
+.middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  font-size: 1.4rem;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 4rem;
+  font-size: 1.4rem;
+}
+
+.table figure {
+  height: 3.6rem;
+  width: 3.6rem;
+  display: flex;
+  margin: 0 0.5rem;
+}
+
+.table img {
+  width: 100%;
+  border-radius: 70%;
+}
+
+@media (max-width: 1000px) {
+  .row {
+    grid-template-columns: 1fr 10fr 3fr 3fr;
+  }
+  .rowHeading {
+    grid-template-columns: 4fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 795px) {
+  .row {
+    grid-template-columns: 1fr 8fr 3fr 3fr;
+  }
+  .rowHeading {
+    grid-template-columns: 3fr 2fr 1fr;
+  }
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 14px;
+  }
+  .rowHeading {
+    grid-template-columns: 3fr 1.5fr 1fr;
+  }
+  .row {
+    margin: 1rem 0.2rem;
+  }
+  .rowHeading {
+    margin: 1rem 0.2rem 0 0.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 13px;
+  }
+  .rowHeading {
+    grid-template-columns: 3fr 1.8fr 1fr;
+  }
+}

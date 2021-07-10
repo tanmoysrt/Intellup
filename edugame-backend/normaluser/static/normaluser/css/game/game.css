@@ -1,0 +1,159 @@
+* {
+  list-style: disc !important;
+}
+
+.cointainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.box {
+  height: 30rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rules */
+.rules {
+  width: 35rem;
+  margin-left: 5rem;
+}
+
+.rules header {
+  width: 100%;
+  font-size: 1.7rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.rules li {
+  font-size: 1.4rem;
+  line-height: 3rem;
+}
+
+.rules li figure {
+  /* border: 1px solid gold; */
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 0 0.3rem;
+  display: inline-block;
+  transform: translateY(0.2rem);
+}
+
+.rules li figure img {
+  /* border: 1px solid indigo; */
+  width: 100%;
+  margin: auto;
+}
+
+/* buttons */
+
+.buttons {
+  width: 25rem;
+  margin-right: 5rem;
+  justify-content: space-evenly;
+}
+
+.buttons button {
+  width: 80%;
+}
+
+.buttons button a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons button a span,
+.buttons button a i {
+  transition: all 0.5s ease;
+}
+
+.buttons button:hover a span,
+.buttons button:hover a i {
+  transform: scale(1.2);
+}
+
+/* BUTTONS colors */
+
+.buttons button:nth-child(2n + 1) {
+  background-color: #00ea17;
+}
+.buttons button:nth-child(2n + 1) a {
+  background-color: #00b912;
+}
+
+.buttons button:nth-child(2n + 1):hover {
+  background: #00b912;
+}
+
+.buttons button:nth-child(2n) {
+  background-color: #ff8a00;
+}
+.buttons button:nth-child(2n):hover {
+  background: #cf7000;
+}
+.buttons button:nth-child(2n) a {
+  background-color: #cf7000;
+}
+
+/* Media Quries */
+@media (max-width: 1150px) {
+  .buttons.box {
+    height: auto;
+    flex-direction: row;
+    /* border: 1px solid black; */
+    width: 90%;
+    margin: auto;
+  }
+
+  .buttons.box button {
+    width: 40%;
+  }
+}
+
+/* Media Quries */
+@media (max-width: 767px) {
+  .buttons.box {
+    width: 100%;
+    margin: 0;
+  }
+
+  .buttons.box button {
+    font-size: 2rem;
+    width: 45%;
+  }
+  .rules.box {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: 13px;
+  }
+  .buttons.box {
+    padding: 0;
+    flex-wrap: wrap;
+  }
+
+  .buttons.box button {
+    font-size: 1.3rem;
+    width: 10rem;
+    margin: 1rem 0.4rem;
+  }
+
+  .rules li {
+    line-height: 2rem;
+    text-align: left;
+  }
+}
+
+

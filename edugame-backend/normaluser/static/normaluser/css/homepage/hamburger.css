@@ -1,0 +1,87 @@
+.toggler {
+  position: absolute;
+  top: 5rem;
+  left: 1rem;
+  height: 3rem;
+  width: 3rem;
+  opacity: 0;
+  z-index: 30;
+  display: none;
+  transition: all 1.2s ease;
+}
+
+.hamburger {
+  position: absolute;
+  top: 5rem;
+  left: 1rem;
+  height: 3rem;
+  width: 3rem;
+  z-index: 20;
+  border: 0.2rem solid var(--primary-dark);
+  border-radius: 0.3rem;
+  padding: 0.5rem 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: whitesmoke;
+  display: none;
+  transition: all 0.6s ease-in-out;
+}
+
+/* hamburger Lines */
+
+ .hamburger > div {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 0.3rem;
+  background: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease-in-out;
+  border-radius: 22rem;
+}
+
+/* For Top and Bottom Lines */
+ .hamburger > div::after,
+ .hamburger > div::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 0.3rem;
+  background: inherit;
+  border-radius: 22rem;
+}
+
+/* For Moving Line to bottom */
+ .hamburger > div::after {
+  top: 10px;
+}
+
+/* Animate The Lines */
+
+ .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+  background-color: black;
+}
+
+/* Turn Lines To X */
+ .toggler:checked + .hamburger > div::before,
+ .toggler:checked + .hamburger > div::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+ .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+/* CHange the ham style when cross */
+ .toggler:checked + .hamburger {
+  border: none;
+  background-color: whitesmoke;
+  opacity: 0.5;
+}

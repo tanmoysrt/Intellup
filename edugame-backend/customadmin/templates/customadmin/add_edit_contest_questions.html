@@ -1,0 +1,126 @@
+{% extends "customadmin/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static "customadmin/plugins/summernote/summernote-bs4.min.css" %}">
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    {% if message %}
+        {% autoescape off %}
+            {{ message }}
+        {% endautoescape %}
+    {% endif %}
+
+
+
+        <div class="card card-info">
+            <div class="card-header">
+              <h3 class="card-title">Info</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-lg-3 text-center">
+                <a style="font-size: 1rem">Total No Of Questions : <b>{{ contest.questionanswerforcontest_set.all | length  }}</b></a><br>
+                <a class="text-muted">Visit the contest page to see the questions</a><br>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+        <div class="row">
+          <!-- left column -->
+          <div class="col-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Question</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form method="post">
+              {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                        <label>Enter Question</label>
+                        <textarea class="form-control" id="summernote" style="display: none;" name="question" required></textarea>
+                      </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>Enter Option 1</label>
+                            <textarea class="form-control" id="summernoteOption1" style="display: none;" name="option1" required></textarea>
+                        </div>
+                        <div class="form-group col-6">
+                            <label>Enter Option 2</label>
+                            <textarea class="form-control" id="summernoteOption2" style="display: none;" name="option2" required></textarea>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label>Enter Option 3</label>
+                            <textarea class="form-control" id="summernoteOption3" style="display: none;" name="option3"></textarea>
+                          </div>
+                        <div class="form-group col-6">
+                            <label>Enter Option 4</label>
+                            <textarea class="form-control" id="summernoteOption4" style="display: none;" name="option4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select correct option</label>
+                        <select class="form-control" name="correct_answer_option" required>
+                          <option value="1">Option 1</option>
+                          <option value="2">Option 2</option>
+                          <option value="3">Option 3</option>
+                          <option value="4">Option 4</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <button type="reset" style="float: left;" class="btn btn-secondary">Reset</button>
+                    <button type="submit" style="float: right;" class="btn btn-primary">Register Question</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+            <!-- general form elements -->
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static "customadmin/plugins/summernote/summernote-bs4.min.js" %}"></script>
+    <script>
+      $(function () {
+        // Summernote
+        $('#summernote').summernote();
+        $('#summernoteOption1').summernote();
+        $('#summernoteOption2').summernote();
+        $('#summernoteOption3').summernote();
+        $('#summernoteOption4').summernote();
+      });
+    </script>
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href.split('?')[0] );
+    }
+    </script>
+{% endblock %}

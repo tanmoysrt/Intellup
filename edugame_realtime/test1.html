@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+      <h1>Hi</h1>
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"
+    integrity="sha512-2RDFHqfLZW8IhPRvQYmK9bTLfj/hddxGXQAred2wNZGkrKQkLGj8RCkXfRJPHlDerdHHIzTFaahq4s/P4V6Qig=="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    const currentUser = "17430f5a-2a6c-479b-9db0-ab56f1ee92a1";
+    var battleId = "2f4da61e-70e6-43ec-b25a-950918ec9eef";
+
+    const socket = io("http://localhost:3000",{
+      reconnectionDelayMax: 1000,
+      autoConnect : true,
+      auth: {
+        userId: currentUser,
+        battleId : battleId
+      }
+    });
+
+    socket.on("connect", () => {
+      console.log("Connected To Socket ID : "+socket.id);
+    });
+
+    socket.on("wait_for_player",(data)=>{
+      console.log(data["message"]);
+    });
+
+    socket.on("found_confirm",(data)=>{
+      console.log(data);
+    });
+
+    socket.on("notify_match",(data)=>{
+      console.log(data);  
+    });
+
+    socket.on("new_userno",(data)=>{
+      console.log(data["message"]);
+      socket.emit("set_userno",{
+          "userNo" : data["userNo"]
+      });
+    });
+
+    socket.on("start_quiz",(data)=>{
+      socket.emit("set_battle_record_id",data.realtime_battle_id);
+      console.log(data);
+    });
+
+
+  </script>
+</body>
+</html>

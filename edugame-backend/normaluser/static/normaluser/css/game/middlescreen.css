@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    animation: fadeInAnimation 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    margin: auto;
+    max-width: 2000px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.left {
+    /* border: solid 1px red; */
+    height: 510px;
+}
+
+.right {
+    display: flex;
+    height: 510px;
+    width: 400px;
+    padding: 0 20px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: solid 1px red; */
+}
+
+.right h1:first-child {
+    font-size: 64px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.right h1:nth-child(2) {
+    font-size: 48px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.btn button {
+    width: 300px;
+    height: 70px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+    background-color: #006096;
+    border: transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.btn button:hover {
+    background-color: #0085FF;
+    transition: all 0.3s;
+}
+
+.btn button:active {
+    background-color: #0085FF;
+    transition: all 0.3s;
+    font-size: 50px;
+}
+
+
+/*-------------------- Dark Mode ------------------------*/
+
+.dark {
+    background-color: #444444;
+}
+
+.dark h1 {
+    color: white;
+}
+
+.dark .btn button {
+    color: #000;
+    background-color: #00FF19;
+}
+
+.dark .btn button:hover {
+    background-color: #14d333;
+    transition: all 0.3s;
+}

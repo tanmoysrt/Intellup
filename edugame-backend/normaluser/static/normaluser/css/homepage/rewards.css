@@ -1,0 +1,29 @@
+.reward-section {
+  padding: 3rem 0;
+}
+
+.rewards {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5rem 0;
+}
+
+.rewards figure {
+  display: block;
+  width: 13rem;
+  height: 13rem;
+  /* border: 1px solid blue; */
+  margin: 1rem 1.5rem;
+}
+
+.rewards figure img {
+  width: 100%;
+  height: 85%;
+}
+
+.rewards figure figcaption {
+  text-align: center;
+}

@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/c06afd5824.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static "normaluser/css/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/login&signup/signup-login.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/login&signup/signup-login-responsive.css" %}" />
+  <title>Sign Up</title>
+</head>
+
+<body>
+  <div class="bg-login">
+    <div class="content">
+      <h1>SIGN UP</h1>
+      <div class="door">
+        <img src="{% static "normaluser/img/door.png" %}" alt="" />
+      </div>
+      <form method="post" id="regForm">
+          {% if message %}
+              {% autoescape off %}
+                  {{ message }}
+              {% endautoescape %}
+          {% endif %}
+          {% csrf_token %}
+        <div class="tab">
+          <div class="text-field">
+            <input type="text" placeholder="Enter New Username" name="username" required value="{{ username }}" />
+          </div>
+          <div class="text-field">
+            <input type="email" placeholder="Enter Your Email" name="email" value="{{ email }}" required />
+          </div>
+
+          <div class="text-field">
+            <input type="password" placeholder="Password" name="pass" required />
+          </div>
+          <div class="text-field">
+            <input type="password" placeholder="Confirm Password" name="confirm_pass" required />
+          </div>
+        </div>
+
+        <div class="tab">
+          <div class="text-field">
+            <input type="text" placeholder="Enter First Name" name="first_name" value="{{ first_name }}" required />
+          </div>
+          <div class="text-field">
+            <input type="text" placeholder="Enter Last Name" name="last_name" value="{{ last_name }}" required />
+          </div>
+
+          <div class="text-field">
+            <select name="present_class" required>
+            {% if class %}
+                <option  disabled>Select Your Class</option>
+                {% else %}
+                <option selected disabled>Select Your Class</option>
+            {% endif %}
+                {% for school_class in school_classes %}
+                    {% if class == school_class.id %}
+                        <option value="{{ school_class.id }}" selected>{{ school_class.title }}</option>
+                    {% else %}
+                        <option value="{{ school_class.id }}">{{ school_class.title }}</option>
+                    {% endif %}
+                {% endfor %}
+
+            </select>
+          </div>
+          <div class="text-field">
+            <input type="date" placeholder="Enter DOB DD-MM-YYYY" name="dob" value="{{ dob }}" required />
+          </div>
+        </div>
+
+
+
+
+        <button class="btn" id="buttonform" type="button" onclick="nextTab()">Sign Up</button>
+        <div class="signup-link">
+          Already have an account? <a href="{% url "normalUserLoginPage" %}">Login</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <script>
+
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+    
+    function showTab(n) {
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      if (n == 0) {
+        document.getElementById("buttonform").innerHTML = 'Next';
+      } 
+      if (n == 1) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+      } 
+
+    }
+
+
+
+        function nextTab() {
+            var x = document.getElementsByClassName("tab");
+            // Exit the function if any field in the current tab is invalid:
+            if (!validateForm()) return false;
+            x[currentTab].style.display = "none";
+            currentTab += 1;
+            if (currentTab == 1) {
+                document.getElementById("buttonform").innerHTML = 'Submit';
+            }
+            if (currentTab == 2) {
+                document.getElementById("regForm").submit();
+                console.log("Form submitted");
+
+                return false;
+            } else {
+                showTab(currentTab);
+            }
+        }
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("tab");
+            y = x[currentTab].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                    // add an "invalid" class to the field:
+                    y[i].className += " err";
+                    // and set the current valid status to false
+                    valid = false;
+                } else {
+                    y[i].classList.remove("err");
+                    {#y[i].classList += " success";#}
+
+                }
+
+            }
+
+            if (currentTab == 1) {
+                y = document.getElementsByTagName("select");
+                if (y[0].value == "Select Your Class") {
+                    y[0].className += " err";
+                    valid = false;
+                } else {
+                    y[0].classList.remove("err");
+                }
+            }
+
+            return valid; // return the valid status
+    }
+  </script>
+</body>
+
+</html>

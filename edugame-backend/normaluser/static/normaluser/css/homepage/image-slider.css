@@ -1,0 +1,100 @@
+.cointainer {
+  overflow: hidden;
+  width: 100%;
+  height: 33rem;
+  position: relative;
+  top: 1px;
+  box-shadow: 0px 0px 4px black;
+}
+
+.logoname {
+  position: absolute;
+  color: white;
+  z-index: 50;
+  top: 6rem;
+  left: 3rem;
+  text-shadow: 1px 1px 1px black;
+  line-height: 6rem;
+}
+
+.logoname header {
+  font-family: "Rubik", sans-serif;
+  font-size: 7rem;
+}
+.logoname p {
+  font-size: 2rem;
+  margin-left: 5rem;
+  margin-top: 1rem;
+  font-style: italic;
+  line-height: 2.7rem;
+}
+/* Slider-buttons */
+.slider-buttons {
+  margin: 5rem 0rem 0 5rem;
+}
+
+.slider-buttons button {
+  width: 12rem;
+  font-size: 2rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: 3px solid var(--secondary);
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 25px var(--primary-light);
+}
+.slider-buttons button a {
+  color: var(--secondary);
+  font-family: "Rubik", sans-serif;
+}
+
+.slider-buttons button:first-child {
+  margin-right: 2.5rem;
+}
+
+.slider-buttons button:hover {
+  box-shadow: inset 0 0 25px var(--primary-light),
+    inset 0 0 45px var(--primary-dark);
+}
+
+.slider figure {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 400%;
+  height: 43rem;
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+  animation: sliderimage 15s infinite;
+}
+
+@keyframes sliderimage {
+  0% {
+    left: 0%;
+  }
+  27% {
+    left: 0%;
+  }
+  33% {
+    left: -100%;
+  }
+  60% {
+    left: -100%;
+  }
+  66% {
+    left: -200%;
+  }
+  94% {
+    left: -200%;
+  }
+  100% {
+    left: -300%;
+  }
+}
+
+.slider figure img {
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  float: left;
+  height: 100%;
+  opacity: 1;
+}

@@ -1,0 +1,133 @@
+/* Reset hrml */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Nunito Sans", sans-serif;
+
+}
+
+/* Css Variables */
+
+:root {
+  --primary-dark: rgb(0, 96, 150);
+  --primary-light: rgb(0, 133, 255);
+  --secondary: rgb(44, 49, 56);
+}
+
+/* Utility Classes */
+
+.bold {
+  font-weight: bold;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  animation: fadeInAnimation 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Logo */
+
+/* Comapny Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 10rem;
+  margin: 0 10px;
+}
+.logo img {
+  width: 100%;
+}
+
+/* Double Color button */
+
+.double-color-button {
+  font-size: 3rem;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.double-color-button a {
+  border-radius: 1rem;
+  font-weight: bold;
+  padding: 0.8rem;
+  width: 100%;
+  color: white;
+}
+
+/* Cards */
+
+.card {
+  border-radius: 0.8rem;
+  color: white;
+  box-shadow: inset -1px -1px 20px rgba(0, 0, 0, 0.8);
+  margin: 1.5rem 1rem;
+  text-shadow: 1px 1px black;
+}
+
+.card header {
+  font-weight: bold;
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+  position: relative;
+}
+
+.card-button {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 80%;
+  padding: 0.5rem 0;
+  border: none;
+  border-radius: 0.8rem;
+  box-shadow: inset -1px -1px 7px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  text-shadow: 1px 1px black;
+  height: 3rem;
+}
+
+.card-button a {
+  font-family: "Rubik", sans-serif;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.card-button a {
+  transition: all 0.3s ease;
+}
+
+.card-button:hover {
+  opacity: 0.7;
+}
+
+.card-button:hover a {
+  transform: scale(1.3);
+}

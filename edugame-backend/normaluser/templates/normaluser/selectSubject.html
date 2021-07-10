@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/92b21ed5b0.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Rubik&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static "normaluser/css/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/navbar.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/common.css" %}" />
+    <link rel="stylesheet" href="{% static "normaluser/css/game/selectSubject.css" %}" />    <title>Select Subject For Battle Search</title>
+  </head>
+  <body>
+      <nav class="navbar">
+      <figure class="logo">
+        <img src="{% static "normaluser/img/logo.png" %}" alt="" />
+      </figure>
+      <div>
+        <figure>
+          <img src="{% static "normaluser/img/coin.png" %}" alt="" />
+        </figure>
+        <span id="points">{{ request.user.userextendedprofile.total_points }}</span>
+        <figure>
+          <a href="{% url "normalUserRechargeWallet" %}"><img src="{% static "normaluser/img/add.png" %}" alt="" /></a>
+        </figure>
+        <figure>
+          <a href="{% url "normalUserProfile" %}"><img style="width: 60px;height: 60px;border-radius: 50%" src="/media/{{ request.user.userextendedprofile.profileimage }}" alt="" /></a>
+        </figure>
+      </div>
+    </nav>
+
+    <header class="heading battle-header">Select Subject</header>
+
+    <div class="dropDown">
+      <div>
+        <div class="searchHeading">
+            <span id="searchDivHTML">Search by</span>
+          <i class="fas fa-angle-down" id="icon"></i>
+        </div>
+      </div>
+      <ul class="subMenu">
+          {% for subject in subjects %}
+                  <li onclick='selectOption("{{ subject.school_subject__title }}","http://127.0.0.1:8000/battle/category/{{ subject.school_subject_id }}/")'>{{ subject.school_subject__title }}</li>
+          {% endfor %}
+      </ul>
+    </div>
+
+    <button class="double-color-button size">
+      <a href="#" onclick="goToSelectedPage()"> <span> Search Battle </span> </a>
+    </button>
+  <script>
+    var urlToGo;
+    let dropHeading = document.querySelector(`.searchHeading`);
+    let submenu = document.querySelector(`.subMenu`);
+    let arrow = document.querySelector(`#icon`);
+
+    function show() {
+      submenu.classList.add(`active`);
+      arrow.classList.add(`rotate`);
+
+      //   For Manually removing the submenu
+      dropHeading.addEventListener(`click`, hide);
+
+      //   For automatic removing the submenu
+      setTimeout(() => {
+        console.log(`bxsjxb`);
+        hide();
+      }, 4000);
+    }
+
+    function hide() {
+      submenu.classList.remove(`active`);
+      arrow.classList.remove(`rotate`);
+      dropHeading.removeEventListener(`click`, hide);
+    }
+
+    function selectOption(name, url) {
+        urlToGo = url;
+        document.getElementById("searchDivHTML").innerHTML = name;
+        hide();
+    }
+
+    function goToSelectedPage() {
+        if(urlToGo != "" && urlToGo != undefined){
+            window.location.href = urlToGo;
+        }else{
+            console.log("Not Selected anything");
+        }
+    }
+
+    dropHeading.addEventListener(`click`, show);
+
+  </script>
+  </body>
+</html>

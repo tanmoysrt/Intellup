@@ -1,0 +1,115 @@
+* {
+  transition: all 0.3s ease;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.dropDown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+
+  padding: 1rem;
+}
+
+.searchHeading {
+  padding: 1rem;
+  width: 14rem;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.65rem;
+  background-color: #f0f0f0;
+  padding-left: 2rem;
+}
+
+/* Styling the submenu */
+.subMenu {
+  /* border: 1px solid black; */
+  position: absolute;
+  bottom: -14.6rem;
+  width: 14rem;
+  height: 16rem;
+  overflow-y: auto;
+  border-radius: 0 0 0.65rem 0.65rem;
+  background-color: whitesmoke;
+  transition: all 0.5s ease;
+  transform: scale(0);
+  opacity: 0;
+  z-index: 2;
+}
+
+.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.subMenu li {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted black;
+  transition: all 0.4s ease;
+}
+
+.subMenu li:last-child {
+  border: none;
+}
+
+.subMenu li:hover {
+  padding-left: 1rem;
+  background-color: #d6d5d5;
+}
+
+.size {
+  font-size: 1.6rem;
+  width: 23rem;
+  display: block;
+  margin: auto;
+  transform: translateY(7rem);
+  background-color: #0085ff;
+}
+
+.size a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  text-align: center;
+  justify-content: center;
+  background-color: #0058a9;
+}
+
+.size a span {
+  transition: all 0.3s ease;
+}
+
+.size:hover {
+  background-color: #0058a9;
+}
+
+.size:hover a span {
+  box-shadow: none;
+  transform: scale(1.5);
+}
+.size:hover a {
+  box-shadow: none;
+}
+
+/* Media */
+
+@media (max-width: 400px) {
+  html {
+    font-size: 14px;
+  }
+
+  .size {
+    width: 20rem;
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "edugame_realtime",
+  "version": "1.0.0",
+  "description": "Handle All realtime work of battle ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tanmoy741127",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "ioredis": "^4.27.6",
+    "mongoose": "^5.13.2",
+    "redis": "^3.1.2",
+    "socket.io": "^4.1.2"
+  }
+}

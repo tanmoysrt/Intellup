@@ -1,0 +1,219 @@
+{% extends "customadmin/base.html" %}
+{% load static %}
+
+{% block head %}
+    <style>
+
+    .floatingbtn{
+        position:fixed;
+        width:60px;
+        height:60px;
+        bottom:40px;
+        right:40px;
+        background-color:#0C9;
+        color:#FFF;
+        border-radius:50px;
+        text-align:center;
+        box-shadow: 2px 2px 3px #999;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .floatingbtn i{
+        margin-top:22px;
+    }
+
+    .floatingbtn i:hover{
+        color: white;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+    {% if message %}
+        {% autoescape off %}
+            {{ message }}
+        {% endautoescape %}
+    {% endif %}
+
+        <a class="floatingbtn" onclick="$('#addBattleModal').modal('show');"><i class="fa fa-plus"></i></a>
+
+        <div class="card card-success">
+            <div class="card-header">
+              <h3 class="card-title">Active Battles</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Battle Name</th>
+                    <th>Points</th>
+                    <th>Difficulty</th>
+                    <th>Class</th>
+                    <th>Subject</th>
+                    <th>Time Bound</th>
+                    <th>Max Time(secs)</th>
+                    <th>No Of Questions</th>
+                    <th>Created On</th>
+                    <th>Updated On</th>
+                    <th>Disable</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for activeBattle in activeBattles %}
+                    <tr>
+                        <td>{{ activeBattle.category.title }}</td>
+                        <td>{{ activeBattle.total_points }}</td>
+                        <td>{{ activeBattle.get_difficulty_display }}</td>
+                        <td>{{ activeBattle.school_class.title }}</td>
+                        <td>{{ activeBattle.school_subject.title }}</td>
+                        <td>{{ activeBattle.category.time_bound }}</td>
+                        <td>{{ activeBattle.category.max_time }}</td>
+                        <td>{{ activeBattle.category.no_of_questions }}</td>
+                        <td>{{ activeBattle.created_on }}</td>
+                        <td>{{ activeBattle.updated_on }}</td>
+                        <td class="text-right py-0 align-middle">
+                            <a href="?id={{ activeBattle.id }}&task=disable" class="btn btn-danger"><i class="fas fa-eye-slash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+        <div class="card card-warning">
+            <div class="card-header">
+              <h3 class="card-title">Expired Battles</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Battle Name</th>
+                    <th>Points</th>
+                    <th>Difficulty</th>
+                    <th>Class</th>
+                    <th>Subject</th>
+                    <th>Time Bound</th>
+                    <th>Max Time(secs)</th>
+                    <th>No Of Questions</th>
+                    <th>Created On</th>
+                    <th>Updated On</th>
+                    <th>Enable</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                {% for expiredBattle in expiredBattles %}
+                    <tr>
+                        <td>{{ expiredBattle.category.title }}</td>
+                        <td>{{ expiredBattle.total_points }}</td>
+                        <td>{{ expiredBattle.get_difficulty_display }}</td>
+                        <td>{{ expiredBattle.school_class.title }}</td>
+                        <td>{{ expiredBattle.school_subject.title }}</td>
+                        <td>{{ expiredBattle.category.time_bound }}</td>
+                        <td>{{ expiredBattle.category.max_time }}</td>
+                        <td>{{ expiredBattle.category.no_of_questions }}</td>
+                        <td>{{ expiredBattle.created_on }}</td>
+                        <td>{{ expiredBattle.updated_on }}</td>
+                        <td class="text-right py-0 align-middle">
+                            <a href="?id={{ expiredBattle.id }}&task=enable" class="btn btn-success"><i class="fas fa-eye"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+        <div class="modal fade" id="addBattleModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+            <form method="post">
+                {% csrf_token %}
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="eaddCategoryModalLabel">Create A New Battle</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden=true>X</span></button>
+              </div>
+              <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">Select Battle Category</label>
+                    <select class="form-control" name="battle_category" required>
+                        {% for battle_category in battle_categories %}
+                            <option value="{{ battle_category.id }}">{{ battle_category.title }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">Select Class</label>
+                    <select class="form-control" name="class" required>
+                        {% for class in classes %}
+                            <option value="{{ class.id }}">{{ class.title }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">Select Subject</label>
+                      <select class="form-control" name="subject" required>
+                        {% for subject in subjects %}
+                            <option value="{{ subject.id }}">{{ subject.title }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">Select Difficulty Level</label>
+                      <select class="form-control" name="difficulty_level" required>
+                        {% for i in difficulty_level %}
+                            <option value="{{ i.0 }}">{{ i.1 }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="" class="col-form-label">Total Points</label>
+                    <input type="number" class="form-control" name="total_points" required>
+                  </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Let's Create</button>
+              </div>
+            </div>
+          </div>
+            </form>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static "customadmin/plugins/jquery/jquery.min.js" %}"></script>
+    <script src="{% static "customadmin/plugins/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href.split('?')[0] );
+    }
+    </script>
+{% endblock %}

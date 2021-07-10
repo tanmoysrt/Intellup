@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)), url(loginbg.png);
+    background-size: cover;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0)), url(loginbg.png);
+    background-size: cover;
+}
+
+.modal-forgot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 5;
+}
+
+.content-modal {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.content-modal h1 {
+    text-align: left;
+    font-weight: bolder;
+    font-size: 40px;
+    padding: 2vw 1vw;
+}
+
+.content-modal input {
+    width: 30vw;
+    height: 40px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: rgb(226, 221, 221);
+    border: transparent;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.submit-btn,
+.close-btn {
+    display: block;
+    width: 100px;
+    height: 35px;
+    border-radius: 5px;
+    border: transparent;
+    color: white;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background-color: #006096;
+}
+
+.close-btn {
+    background-color: #2C3138;
+}
+
+.submit-btn:hover {
+    background-color: #083f5f;
+}
+
+.close-btn:hover {
+    background-color: #0b0b0c;
+}
+
+.alert {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.alert.alert-danger {
+  background-color: rgba(248, 215, 218, 1);
+  border-color: rgba(220, 53, 69, 1);
+  color: rgba(114, 28, 36,1);
+}

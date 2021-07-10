@@ -1,0 +1,89 @@
+@media (max-width: 840px) {
+    .heading h1 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .heading h1 {
+        font-size: 36px;
+    }
+    .details {
+        margin-top: 20px;
+        flex-direction: column;
+    }
+    .input-field {
+        margin: 10px 5px;
+    }
+    label {
+        font-size: 20px;
+    }
+    .col-1 input {
+        width: 300px;
+        height: 45px;
+        padding: 10px;
+        font-size: 15px;
+    }
+    .col-2 input {
+        width: 300px;
+        height: 45px;
+        padding: 10px;
+        font-size: 15px;
+    }
+    .btn button {
+        width: 300px;
+        height: 45px;
+        font-size: 24px;
+        border-radius: 9px;
+        margin: 30px 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .heading h1 {
+        font-size: 24px;
+    }
+    .details {
+        margin-top: 40px;
+        flex-direction: column;
+    }
+    .input-field {
+        margin: 5px 0;
+    }
+    label {
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .col-1 input {
+        width: 200px;
+        height: 35px;
+        padding: 8px;
+        font-size: 10px;
+    }
+    .col-2 input {
+        width: 200px;
+        height: 35px;
+        padding: 8px;
+        font-size: 10px;
+    }
+    .btn button {
+        width: 200px;
+        height: 35px;
+        font-size: 18px;
+        border-radius: 5px;
+        margin: 20px 0;
+    }
+}
