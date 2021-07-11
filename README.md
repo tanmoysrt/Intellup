@@ -168,4 +168,4 @@ It will start server in **127.0.0.1:8000**
 ![Admin Panel](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/6.png)
 
 ## License
-[MIT License](https://github.com/Tanmoy741127/Intellup/blob/main/LICENSE)
+[BSD 3-Clause "New" or "Revised" License](https://github.com/Tanmoy741127/Intellup/blob/main/LICENSE)
