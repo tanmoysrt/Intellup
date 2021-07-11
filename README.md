@@ -130,6 +130,22 @@ It will start server in **127.0.0.1:8000**
 
 ![Leaderboard](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/8.png)
 
+> Profile Page
+
+![Profile Page](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/9.png)
+
+> Wallet
+
+![Wallet](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/10.png)
+
+> Performance Stats 
+
+![Performance Stats ](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/11.png)
+
+> Coin Recharge
+
+![Coin Recharge](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/12.png)
+
 > Admin Panel Overview
 
 ![Admin Panel](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/6.png)
