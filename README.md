@@ -1,5 +1,7 @@
 # Project : Intellup
 
+### Deployment has been removed.
+
 #### Project is live in [http://3.7.232.152/](http://3.7.232.152/)
 You can simply login by this accounts or register a new one.
 Dummy Accounts :
