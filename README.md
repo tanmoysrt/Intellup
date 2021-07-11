@@ -79,7 +79,7 @@ MAILGUN_API=''
 RAZORPAY_KEY_ID=''
 RAZORPAY_KEY_SECRET=''
 ```
-> We are using mailgun as our mail service , So we need to collect the API keys and Ednpoint from its dashboard. Secondly, we need Razorpay payment gateway . We need to collect the API keys from Razorpay Dashboard
+> We are using mailgun as our mail service , So we need to collect the API keys and Endpoint from its dashboard. Secondly, we need Razorpay payment gateway . We need to collect the API keys from Razorpay Dashboard
 
 6.Create a Virtualenv & Activate
 ```
