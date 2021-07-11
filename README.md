@@ -26,12 +26,11 @@ Password : 123456
 On a parallel perspective, according to research, an average class 9 student spends 3 hours of his time every day online, most of it is spent in playing games or watching random videos, which in no way contributes to his academic growth.
 
 ### Solution 
-We have built an platform, where any student can choose his subject and according that he can participate in various contests.
-Even he can compete with his friends or oponnents in realtime.
+We have built a platform, where any student can choose his subject and accordingly he/she can participate in various contests. Even he/she can compete with his/her friends or opponents in realtime.
 
-We are introducing the microtransaction system in this, where student can compete and get rewards in form of cash or vouchers  Initially every student will get a certain ammount of coins. They can play battle or contest and earn coins which can be converted to cash or vouchers .
+We are introducing the microtransaction system in this. A student can compete and get rewards in form of cash or vouchers.To start the game we are providing a bunch of coins which can be used in battle or contest to earn coins which can be converted to cash or vouchers .
 
-
+Thus we have gamified the process of learning hoping to make a more enriched and creative future
 
 # Project Components
 
