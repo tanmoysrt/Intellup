@@ -19,13 +19,13 @@ Username : admin
 Password : 123456
 ```
 
-### Description
-##### What problem we are solving ?
+# Description
+### What problem we are solving ?
 => We all know how boring it is to wake up in the morning and attend lectures online. It even hurts more to give an exam online, even more when it is a competitive exam we are preparing for. We all agree that learning has quite a boring and monotonous task now.
 
 On a parallel perspective, according to research, an average class 9 student spends 3 hours of his time every day online, most of it is spent in playing games or watching random videos, which in no way contributes to his academic growth.
 
-#### Solution 
+### Solution 
 We have built an platform, where any student can choose his subject and according that he can participate in various contests.
 Even he can compete with his friends or oponnents in realtime.
 
