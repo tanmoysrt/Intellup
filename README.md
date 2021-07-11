@@ -39,9 +39,13 @@ We are introducing the microtransaction system in this. A student can compete an
 
 Thus we have gamified the process of learning hoping to make a more enriched and creative future
 
+
+
 # Demo
 
 [![Intellup Demo](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/video.gif)](https://youtu.be/6-EcysQV_uU "Intellup Demo")
+
+[For More Info Check This Presentation](https://raw.githubusercontent.com/Tanmoy741127/Intellup/f3de96e4407a88e2bb4cfe97b79a74444c55c767/screenshots/presentation.pdf)
 
 
 # Project Components
