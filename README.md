@@ -26,6 +26,9 @@ Password : 123456
 On a parallel perspective, according to research, an average class 9 student spends 3 hours of his time every day online, most of it is spent in playing games or watching random videos, which in no way contributes to his academic growth.
 
 ### Solution 
+=> It’s human physiology that we perform better in groups especially when we are competing with others. In today’s world where everything is online students need a platform where they can compete with others to know their true potential and can work to improve it. 
+
+
 We have built a platform, where any student can choose his subject and accordingly he/she can participate in various contests. Even he/she can compete with his/her friends or opponents in realtime.
 
 We are introducing the microtransaction system in this. A student can compete and get rewards in form of cash or vouchers.To start the game we are providing a bunch of coins which can be used in battle or contest to earn coins which can be converted to cash or vouchers .
