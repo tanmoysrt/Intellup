@@ -25,6 +25,10 @@ Password : 123456
 
 On a parallel perspective, according to research, an average class 9 student spends 3 hours of his time every day online, most of it is spent in playing games or watching random videos, which in no way contributes to his academic growth.
 
+
+Online education had reduced student to student interaction. Sitting all day long in front of a laptop attending online lectures had reduced competitiveness among students. To succeed in a competitive exam, students need to get a taste for it from childhood. Our application helps to build a competitive nature among students which will help them in future. Students can battle with other participants throughout the world sitting at their home and prizes that they will get will motivate them. It’s human psychology that if we get rewards we perform better.
+
+
 ### Solution 
 => It’s human physiology that we perform better in groups especially when we are competing with others. In today’s world where everything is online students need a platform where they can compete with others to know their true potential and can work to improve it. 
 
