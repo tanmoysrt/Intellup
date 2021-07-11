@@ -41,7 +41,7 @@ Thus we have gamified the process of learning hoping to make a more enriched and
 
 
 
-# Demo
+# Demo (Click On This 👇 Pic To Open Video)
 
 [![Intellup Demo](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/video.gif)](https://youtu.be/6-EcysQV_uU "Intellup Demo")
 
