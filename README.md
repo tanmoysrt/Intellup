@@ -122,7 +122,15 @@ It will start server in **127.0.0.1:8000**
 
 ![Battle Page](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/4.png)
 
-> Admin Paenl Overview
+> Contest List Page
+
+![Contest Page](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/7.png)
+
+> Leaderboard
+
+![Leaderboard](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/8.png)
+
+> Admin Panel Overview
 
 ![Admin Panel](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/6.png)
 
