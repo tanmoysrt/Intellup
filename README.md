@@ -37,7 +37,7 @@ Thus we have gamified the process of learning hoping to make a more enriched and
 
 # Demo
 
-[![Intellup Demo](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/video.gif)](http://www.youtube.com/watch?v=EI3aFmja6js "Intellup Demo")
+[![Intellup Demo](https://raw.githubusercontent.com/Tanmoy741127/Intellup/main/screenshots/video.gif)](https://youtu.be/6-EcysQV_uU "Intellup Demo")
 
 
 # Project Components
