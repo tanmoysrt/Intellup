@@ -11,7 +11,7 @@ Username : user2
 Password : 12345
 ```
 
-You can visit admin panel located at [http://3.7.232.152/admin](http://3.7.232.152/admin/)
+You can visit admin panel located at [http://3.7.232.152/admin/](http://3.7.232.152/admin/)
 
 Admin login details :
 ```
