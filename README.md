@@ -2,8 +2,8 @@
 
 ### Deployment has been removed.
 
-#### Project is live in [http://3.7.232.152/](http://3.7.232.152/)
-You can simply login by this accounts or register a new one.
+<!-- #### Project is live in [http://3.7.232.152/](http://3.7.232.152/) -->
+<!-- You can simply login by this accounts or register a new one.
 Dummy Accounts :
 ```
 Username : user1
@@ -13,13 +13,13 @@ Username : user2
 Password : 12345
 ```
 
-You can visit admin panel located at [http://3.7.232.152/admin/](http://3.7.232.152/admin/)
+You can visit admin panel located at [http://3.7.232.152/admin/](http://3.7.232.152/admin/) -->
 
-Admin login details :
+<!-- Admin login details :
 ```
 Username : admin
 Password : 123456
-```
+``` -->
 
 # Description
 ### What problem we are solving ?
