@@ -67,7 +67,7 @@ Open an terminal and run
 redis-server
 ```
 
-2.Create a database in moongodb . Name : "edugame" 
+2.Create a database in mongodb . Name : "edugame" 
 
 3.Go to the edugame_realtime folder and run this commands
 
